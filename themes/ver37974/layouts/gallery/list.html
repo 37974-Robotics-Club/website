@@ -1,0 +1,18 @@
+{{ define "main" }}
+{{ partial "page-head.html" (dict "page" .) }}
+<div class="wrap section" style="padding-top:0">
+  {{ with .Content }}<div class="prose" style="margin-bottom:2.5rem">{{ . }}</div>{{ end }}
+  <div class="album-grid">
+    {{ range .Pages }}{{ $album := . }}
+      {{ $imgs := .Resources.ByType "image" }}
+      {{ $cover := "" }}{{ with .Params.cover }}{{ $cover = . }}{{ else }}{{ with .Params.photos }}{{ $cover = (index . 0).image }}{{ else }}{{ with index $imgs 0 }}{{ $cover = .Name }}{{ end }}{{ end }}{{ end }}
+      {{ $count := cond (gt (len (.Params.photos | default slice)) 0) (len .Params.photos) (len $imgs) }}
+      <a class="album" href="{{ .RelPermalink }}">
+        <div class="album__cover">{{ with $cover }}{{ partial "img.html" (dict "page" $album "src" . "fill" "480x360" "alt" "") }}{{ end }}</div>
+        <h3>{{ .Title }}</h3>
+        <p>{{ partial "date.html" .Date }}, {{ $count }} photo{{ if ne $count 1 }}s{{ end }}{{ with .Params.videos }}, {{ len . }} video{{ if ne (len .) 1 }}s{{ end }}{{ end }}</p>
+      </a>
+    {{ else }}<p class="empty">No albums yet.</p>{{ end }}
+  </div>
+</div>
+{{ end }}

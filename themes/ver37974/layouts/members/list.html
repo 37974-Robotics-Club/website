@@ -1,0 +1,44 @@
+{{ define "main" }}
+{{ partial "page-head.html" (dict "page" .) }}
+<div class="wrap section" style="padding-top:0">
+  {{ with .Content }}<div class="prose" style="margin-bottom:2.5rem">{{ . }}</div>{{ end }}
+  {{ $students := where .Pages "Params.type" "ne" "mentor" }}
+  {{ $mentors := where .Pages "Params.type" "mentor" }}
+
+  {{ with $students }}
+  <section class="group" aria-labelledby="students-h">
+    <div class="sec-head"><h2 id="students-h">Students</h2></div>
+    {{ $teams := slice }}{{ range . }}{{ range .Params.subteams }}{{ $teams = $teams | append . }}{{ end }}{{ end }}
+    {{ $teams = $teams | uniq }}
+    {{ if gt (len $teams) 1 }}
+    <div class="filters" role="group" aria-label="Show subteam" data-filter-group="student-grid">
+      <button class="filter" type="button" data-value="all" aria-pressed="true">Everyone</button>
+      {{ range $.Params.subteam_order | default $teams }}{{ if in $teams . }}<button class="filter" type="button" data-value="{{ . }}" aria-pressed="false">{{ . }}</button>{{ end }}{{ end }}
+    </div>
+    {{ end }}
+    <ul class="member-grid" id="student-grid">
+      {{ range .ByWeight }}{{ partial "member-card.html" . }}{{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  {{ with $mentors }}
+  <section class="group" aria-labelledby="mentors-h">
+    <div class="sec-head"><h2 id="mentors-h">Coaches and mentors</h2></div>
+    <ul class="member-grid">
+      {{ range .ByWeight }}{{ partial "member-card.html" . }}{{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  {{ with .Params.join }}
+  <section class="group">
+    <div class="now__panel" style="max-width:44rem">
+      <h3>{{ .title }}</h3>
+      <p class="muted">{{ .text }}</p>
+      <a class="btn btn--primary" href="{{ partial "link.html" .url }}">{{ .label }}</a>
+    </div>
+  </section>
+  {{ end }}
+</div>
+{{ end }}

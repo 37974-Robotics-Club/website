@@ -1,0 +1,13 @@
+{{/* Finds an image by path. Looks in the page's own folder, then assets/.
+     Returns a Hugo image resource, or nothing if it can't be processed.
+     Usage: {{ $r := partial "image-resolve.html" (dict "page" . "src" "/images/uploads/x.jpg") }} */}}
+{{- $src := .src -}}
+{{- $r := "" -}}
+{{- if $src -}}
+  {{- if not (strings.HasPrefix $src "http") -}}
+    {{- with .page -}}{{- with .Resources.GetMatch $src -}}{{- $r = . -}}{{- end -}}{{- end -}}
+    {{- if not $r -}}{{- with resources.Get (strings.TrimPrefix "/" $src) -}}{{- $r = . -}}{{- end -}}{{- end -}}
+    {{- if $r -}}{{- if not (in (slice "jpeg" "png" "webp" "gif" "tiff" "bmp") $r.MediaType.SubType) -}}{{- $r = "" -}}{{- end -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $r -}}

@@ -1,0 +1,15 @@
+{{ define "main" }}
+{{ $meta := "" }}
+{{ if and .IsPage (ne .Section "") }}
+  {{ $meta = printf "<time datetime=\"%s\">%s</time>" (.Date.Format "2006-01-02") (partial "date.html" .Date) }}
+  {{ with .Params.author }}{{ $meta = printf "%s, by %s" $meta . }}{{ end }}
+{{ end }}
+{{ $crumb := "" }}{{ with .Parent }}{{ if not .IsHome }}{{ $crumb = dict "url" .RelPermalink "name" (lower .Title) }}{{ end }}{{ end }}
+{{ partial "page-head.html" (dict "page" . "meta" $meta "crumb" $crumb "lead" .Params.summary) }}
+<article class="prose-wrap section" style="padding-top:0">
+  {{ with .Params.cover }}<figure class="cover">{{ partial "img.html" (dict "page" $ "src" . "width" 1200 "alt" ($.Params.cover_alt | default "") "eager" true) }}</figure>{{ end }}
+  <div class="prose">{{ .Content }}</div>
+  {{ with .GetTerms "tags" }}<ul class="tags">{{ range . }}<li><a class="tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>{{ end }}</ul>{{ end }}
+  {{ if and .IsPage (ne .Section "") }}{{ partial "post-nav.html" . }}{{ end }}
+</article>
+{{ end }}

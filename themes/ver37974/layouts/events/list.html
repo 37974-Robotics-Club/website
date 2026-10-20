@@ -1,0 +1,22 @@
+{{ define "main" }}
+{{ partial "page-head.html" (dict "page" .) }}
+<div class="wrap section" style="padding-top:0">
+  {{ with .Content }}<div class="prose" style="margin-bottom:2.5rem">{{ . }}</div>{{ end }}
+  {{ $upcoming := partial "upcoming-events.html" . }}
+  <section aria-labelledby="up-h">
+    <div class="sec-head"><h2 id="up-h">Coming up</h2></div>
+    {{ with $upcoming }}
+      <ul class="row-list">{{ range . }}{{ partial "event-row.html" . }}{{ end }}</ul>
+    {{ else }}
+      <p class="empty">No events scheduled right now. Follow us on social media to hear about the next one.</p>
+    {{ end }}
+  </section>
+  {{ $past := slice }}{{ range .Pages }}{{ if not (in $upcoming .) }}{{ $past = $past | append . }}{{ end }}{{ end }}
+  {{ with $past }}
+  <section aria-labelledby="past-h" style="margin-top:var(--section)">
+    <div class="sec-head"><h2 id="past-h">Past events</h2></div>
+    <ul class="row-list">{{ range sort . "Params.start" "desc" }}{{ partial "event-row.html" . }}{{ end }}</ul>
+  </section>
+  {{ end }}
+</div>
+{{ end }}

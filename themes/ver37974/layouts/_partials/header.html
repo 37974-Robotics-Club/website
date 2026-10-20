@@ -1,0 +1,37 @@
+{{ $current := . }}
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="{{ "" | relURL }}" aria-label="{{ site.Params.teamName }} home">
+      <img src="{{ "images/logo.png" | relURL }}" alt="" width="44" height="44">
+      <span class="brand__name">{{ site.Params.teamName }}<small>FTC team {{ site.Params.teamNumber }}</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul>
+        {{ range $i, $m := site.Menus.main }}
+          {{ $active := or ($current.IsMenuCurrent "main" $m) ($current.HasMenuCurrent "main" $m) }}
+          {{ if not $active }}{{ range $m.Children }}{{ if eq (strings.TrimSuffix "/" (index (split .URL "#") 0)) (strings.TrimSuffix "/" $current.RelPermalink) }}{{ $active = true }}{{ end }}{{ end }}{{ end }}
+          {{ if not $active }}{{ if and $m.URL (ne $m.URL "/") (strings.HasPrefix $current.RelPermalink $m.URL) }}{{ $active = true }}{{ end }}{{ end }}
+          <li class="nav__item{{ if $active }} is-active{{ end }}">
+            {{ if .HasChildren }}
+              <button class="nav__link" type="button" data-sub aria-expanded="false" aria-controls="sub-{{ $i }}">
+                {{ .Name }}
+                <svg class="nav__caret" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+              </button>
+              <ul class="nav__sub" id="sub-{{ $i }}">
+                {{ range .Children }}
+                  <li><a href="{{ .URL }}"{{ if eq .URL $current.RelPermalink }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+                {{ end }}
+              </ul>
+            {{ else }}
+              <a class="nav__link" href="{{ .URL }}"{{ if eq .URL $current.RelPermalink }} aria-current="page"{{ end }}>{{ .Name }}</a>
+            {{ end }}
+          </li>
+        {{ end }}
+      </ul>
+      {{ range site.Menus.cta }}
+        <a class="btn btn--primary nav__cta" href="{{ .URL }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+  </div>
+</header>

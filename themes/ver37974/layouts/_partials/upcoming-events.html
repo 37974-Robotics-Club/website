@@ -1,0 +1,8 @@
+{{/* Returns events whose start (or end) is today or later, soonest first. */}}
+{{- $today := now.Format "2006-01-02" -}}
+{{- $out := slice -}}
+{{- range where site.RegularPages "Section" "events" -}}
+  {{- $last := .Params.end | default .Params.start -}}
+  {{- if $last -}}{{- if ge ((time.AsTime $last).Format "2006-01-02") $today -}}{{- $out = $out | append . -}}{{- end -}}{{- end -}}
+{{- end -}}
+{{- return (sort $out "Params.start" "asc") -}}

@@ -1,0 +1,416 @@
+# Site editor (Sveltia CMS) configuration.
+# Every save becomes a commit on GitHub, and the site rebuilds automatically.
+# See README.md, "Turning on the site editor", for the one-time setup.
+
+backend:
+  name: github
+  repo: YOUR-GITHUB-ACCOUNT/YOUR-REPO   # change this
+  branch: main
+  # To let people sign in with a "Sign in with GitHub" button, deploy the
+  # free sveltia-cms-auth worker and put its URL here. Without it, editors can
+  # still sign in with a GitHub personal access token.
+  # base_url: https://sveltia-cms-auth.YOUR-NAME.workers.dev
+
+publish_mode: simple
+media_folder: assets/images/uploads
+public_folder: /images/uploads
+site_url: https://example.org/
+display_url: https://example.org/
+logo:
+  src: /images/logo.png
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  # ------------------------------------------------------------------ News
+  - name: announcements
+    label: Announcements
+    label_singular: Announcement
+    description: Short notices for families. Pinned ones show first and on the home page.
+    folder: content/announcements
+    create: true
+    format: yaml-frontmatter
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} ({{date}})"
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime, time_format: false }
+      - { name: pinned, label: Pin to the top, widget: boolean, default: false, required: false }
+      - { name: summary, label: One-line summary, widget: text, required: false }
+      - { name: body, label: Details, widget: markdown, required: false }
+
+  - name: blog
+    label: Blog
+    label_singular: Blog post
+    description: Season updates for families and sponsors.
+    folder: content/blog
+    create: true
+    format: yaml-frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}} ({{date}})"
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime, time_format: false }
+      - { name: author, label: Author (first name), widget: string, required: false }
+      - { name: summary, label: Summary, hint: Shown on cards and in link previews., widget: text, required: false }
+      - { name: cover, label: Cover image, widget: image, required: false }
+      - { name: cover_alt, label: Cover image description, hint: Describe the photo for people using screen readers., widget: string, required: false }
+      - { name: tags, label: Tags, widget: list, required: false }
+      - { name: body, label: Post, widget: markdown }
+
+  # ------------------------------------------------------------------ Team
+  - name: members
+    label: Members
+    label_singular: Member
+    description: First names only for students. Turn on photo consent only when a parent has signed the media release.
+    folder: content/members
+    create: true
+    format: yaml-frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}}: {{role}}"
+    sortable_fields: [weight, title]
+    fields:
+      - { name: title, label: First name, widget: string }
+      - name: type
+        label: Member type
+        widget: select
+        options: [{ label: Student, value: student }, { label: Coach or mentor, value: mentor }]
+        default: student
+      - { name: role, label: Role, hint: "e.g. Team captain, Programming lead, Driver", widget: string, required: false }
+      - name: subteams
+        label: Subteams
+        widget: select
+        multiple: true
+        required: false
+        options: [Build, Programming, CAD, Drive team, Outreach, Business]
+      - { name: grade, label: Grade, widget: number, value_type: int, min: 5, max: 12, required: false }
+      - { name: joined, label: Year joined, widget: string, required: false }
+      - { name: bio, label: One-line bio, widget: string, required: false }
+      - { name: photo, label: Photo, widget: image, required: false }
+      - { name: photo_consent, label: Parent has given media consent, hint: The photo is only shown when this is on., widget: boolean, default: false }
+      - { name: weight, label: Sort order, hint: Lower numbers show first., widget: number, value_type: int, default: 50 }
+
+  # ------------------------------------------------------------------ Our work
+  - name: robot
+    label: Robot seasons
+    label_singular: Season
+    description: One entry per season. Add a new version every time the robot changes significantly.
+    folder: content/robot
+    create: true
+    format: yaml-frontmatter
+    slug: "{{slug}}"
+    summary: "{{season}}: {{robot_name}}"
+    fields:
+      - { name: title, label: Page title, widget: string, hint: "e.g. 2026–27 season" }
+      - { name: date, label: Season start, widget: datetime, time_format: false }
+      - { name: season, label: Season, widget: string, hint: "e.g. 2026–27" }
+      - { name: game, label: Game name, widget: string, required: false }
+      - { name: robot_name, label: Robot name, widget: string, required: false }
+      - { name: current, label: This is the current season, widget: boolean, default: false }
+      - { name: summary, label: Summary, widget: text, required: false }
+      - { name: image, label: Robot photo, widget: image, required: false }
+      - { name: image_alt, label: Photo description, widget: string, required: false }
+      - name: specs
+        label: Specs
+        widget: list
+        required: false
+        fields:
+          - { name: label, label: Label, widget: string }
+          - { name: value, label: Value, widget: string }
+      - name: versions
+        label: Versions (oldest first)
+        widget: list
+        required: false
+        summary: "{{fields.version}}: {{fields.title}}"
+        fields:
+          - { name: version, label: Version, widget: string, hint: "e.g. v1, v2, v2.1" }
+          - { name: title, label: Title, widget: string }
+          - { name: date, label: Date, widget: datetime, time_format: false }
+          - { name: summary, label: What changed, widget: text }
+          - { name: changes, label: Changes, widget: list, required: false }
+          - { name: journal, label: Link to journal entry, widget: string, hint: "e.g. /portfolio/intake-v1-to-v2/", required: false }
+      - name: results
+        label: Competition results
+        widget: list
+        required: false
+        summary: "{{fields.event}}"
+        fields:
+          - { name: event, label: Event, widget: string }
+          - { name: date, label: Date, widget: datetime, time_format: false, required: false }
+          - { name: result, label: Result, widget: string, hint: "e.g. Ranked 5th of 24, alliance captain" }
+          - { name: award, label: Award, widget: string, required: false }
+      - name: links
+        label: Links (code, CAD)
+        widget: list
+        required: false
+        fields:
+          - { name: label, label: Label, widget: string }
+          - { name: url, label: URL, widget: string }
+      - { name: body, label: Strategy and notes, widget: markdown, required: false }
+
+  - name: portfolio
+    label: Engineering portfolio
+    label_singular: Journal entry
+    description: One entry per decision, test or design session.
+    folder: content/portfolio
+    create: true
+    format: yaml-frontmatter
+    slug: "{{slug}}"
+    summary: "{{subsystem}}: {{title}} ({{date}})"
+    sortable_fields: [date, title, subsystem]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime, time_format: false }
+      - { name: season, label: Season, widget: string, default: "2026–27" }
+      - name: subsystem
+        label: Subsystem
+        widget: select
+        options: [Strategy, Drivetrain, Intake, Outtake, Arm, Programming, Autonomous, CAD, Electrical, Outreach, Business]
+      - { name: authors, label: Authors (first names), widget: list }
+      - { name: summary, label: Summary, widget: text }
+      - { name: cover, label: Image, widget: image, required: false }
+      - name: body
+        label: Entry
+        widget: markdown
+        default: |
+          ## Goal
+
+          ## What we tried
+
+          ## Results
+
+          ## Decision
+
+          ## Next steps
+
+  - name: outreach
+    label: Outreach
+    label_singular: Outreach event
+    folder: content/outreach
+    create: true
+    format: yaml-frontmatter
+    slug: "{{year}}-{{month}}-{{slug}}"
+    summary: "{{title}} ({{date}})"
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime, time_format: false }
+      - { name: location, label: Location, widget: string, required: false }
+      - { name: hours, label: Volunteer hours (total for the team), widget: number, value_type: float, required: false }
+      - { name: people_reached, label: People reached, widget: number, value_type: int, required: false }
+      - { name: partners, label: Partners, widget: list, required: false }
+      - { name: summary, label: Summary, widget: text }
+      - { name: cover, label: Photo, widget: image, required: false }
+      - { name: body, label: Write-up, widget: markdown, required: false }
+
+  # ------------------------------------------------------------------ Events & media
+  - name: events
+    label: Events
+    label_singular: Event
+    description: Upcoming events move to "Past events" automatically after they happen.
+    folder: content/events
+    create: true
+    format: yaml-frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}} ({{start}})"
+    fields:
+      - { name: title, label: Event name, widget: string }
+      - { name: date, label: Posted on, widget: datetime, time_format: false }
+      - { name: start, label: Starts, widget: datetime }
+      - { name: end, label: Ends, widget: datetime, required: false }
+      - name: event_type
+        label: Type
+        widget: select
+        options: [Qualifier, Championship, Scrimmage, League meet, Outreach, Team event]
+      - { name: location, label: Location (venue and city), widget: string, required: false }
+      - { name: address, label: Street address, hint: "Public venues only. Never a host family's home.", widget: string, required: false }
+      - { name: link, label: Official event page, widget: string, required: false }
+      - { name: result, label: Our result, widget: string, required: false }
+      - { name: album, label: Photo album link, widget: string, hint: "e.g. /gallery/2026-season-kickoff/", required: false }
+      - { name: summary, label: Summary, widget: text, required: false }
+      - { name: body, label: Details, widget: markdown, required: false }
+
+  - name: gallery
+    label: Gallery
+    label_singular: Album
+    description: Only post photos of members who have media consent.
+    folder: content/gallery
+    create: true
+    format: yaml-frontmatter
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    slug: "{{year}}-{{slug}}"
+    summary: "{{title}} ({{date}})"
+    fields:
+      - { name: title, label: Album name, widget: string }
+      - { name: date, label: Date, widget: datetime, time_format: false }
+      - { name: event, label: Event, widget: string, required: false }
+      - { name: summary, label: Summary, widget: text, required: false }
+      - { name: cover, label: Cover photo, widget: image, required: false }
+      - name: photos
+        label: Photos
+        widget: list
+        summary: "{{fields.caption}}"
+        fields:
+          - { name: image, label: Photo, widget: image }
+          - { name: caption, label: Caption, widget: string, required: false }
+      - name: videos
+        label: YouTube videos
+        widget: list
+        required: false
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: youtube, label: YouTube link, widget: string }
+      - { name: body, label: Notes, widget: markdown, required: false }
+
+  # ------------------------------------------------------------------ Sponsors
+  - name: sponsors
+    label: Sponsors
+    label_singular: Sponsor
+    folder: content/sponsors
+    create: true
+    format: yaml-frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}} ({{tier}})"
+    fields:
+      - { name: title, label: Sponsor name, widget: string }
+      - name: tier
+        label: Tier
+        hint: Must match a tier name on the Sponsorship page settings.
+        widget: select
+        options: [Gold, Silver, Bronze, Supporter]
+      - { name: logo, label: Logo, hint: A PNG or SVG with a transparent background works best., widget: image, required: false }
+      - { name: website, label: Website, widget: string, required: false }
+      - { name: message, label: Thank-you message, hint: "What their support made possible.", widget: string, required: false }
+      - { name: active, label: Current sponsor, hint: Turn off to move them to the past-sponsors list., widget: boolean, default: true }
+      - { name: weight, label: Sort order within tier, widget: number, value_type: int, default: 10 }
+
+  # ------------------------------------------------------------------ Pages
+  - name: pages
+    label: Pages
+    files:
+      - name: home
+        label: Home page
+        file: content/_index.md
+        format: yaml-frontmatter
+        fields:
+          - { name: title, label: Title, widget: hidden, default: Home }
+          - { name: description, label: Description for search engines, widget: text }
+          - name: hero
+            label: Top section
+            widget: object
+            fields:
+              - { name: kicker, label: Small line above the headline, widget: string, required: false }
+              - { name: title, label: Headline, widget: string }
+              - { name: text, label: Intro, widget: text }
+              - name: buttons
+                label: Buttons
+                widget: list
+                max: 2
+                fields:
+                  - { name: label, label: Label, widget: string }
+                  - { name: url, label: Link, widget: string }
+          - name: pillars
+            label: What we do
+            widget: list
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: text, label: Text, widget: text }
+              - { name: url, label: Link, widget: string, required: false }
+              - { name: link_label, label: Link text, widget: string, required: false }
+      - name: about
+        label: About us
+        file: content/about/_index.md
+        format: yaml-frontmatter
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: lead, label: Intro, widget: text }
+          - name: facts
+            label: Quick facts
+            widget: list
+            fields:
+              - { name: label, label: Label, widget: string }
+              - { name: value, label: Value, widget: string }
+          - name: values
+            label: Team values
+            widget: list
+            fields:
+              - { name: title, label: Value, widget: string }
+              - { name: text, label: Description, widget: text }
+          - name: structure
+            label: Team structure
+            widget: object
+            fields:
+              - { name: title, label: Heading, widget: string }
+              - { name: text, label: Overview, widget: text }
+              - name: roles
+                label: Roles
+                widget: list
+                fields:
+                  - { name: name, label: Role, widget: string }
+                  - { name: text, label: What they do, widget: text }
+          - { name: location_note, label: Note about where we meet, widget: string }
+          - { name: body, label: Who we are, widget: markdown }
+      - name: sponsors_page
+        label: Our sponsors page
+        file: content/sponsors/_index.md
+        format: yaml-frontmatter
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: lead, label: Intro, widget: text }
+          - { name: body, label: Thank-you message, widget: markdown }
+      - name: sponsor_us
+        label: Become a sponsor page
+        file: content/sponsor-us/_index.md
+        format: yaml-frontmatter
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: lead, label: Intro, widget: text }
+          - name: reasons
+            label: Reasons to sponsor
+            widget: list
+            fields:
+              - { name: title, label: Reason, widget: string }
+              - { name: text, label: Explanation, widget: text }
+          - { name: contact_text, label: Text beside the contact form, widget: text }
+          - { name: body, label: Why sponsor (main text), widget: markdown }
+      - name: sponsorship
+        label: Sponsorship tiers and budget
+        file: data/sponsorship.yaml
+        format: yaml
+        fields:
+          - name: cta
+            label: Sponsor banner (shown at the bottom of many pages)
+            widget: object
+            fields:
+              - { name: title, label: Heading, widget: string }
+              - { name: text, label: Text, widget: text }
+          - { name: budget_intro, label: Budget intro, widget: text }
+          - name: budget
+            label: Season budget
+            widget: list
+            summary: "{{fields.item}}: ${{fields.amount}}"
+            fields:
+              - { name: item, label: Item, widget: string }
+              - { name: note, label: Note, widget: string, required: false }
+              - { name: amount, label: Amount ($), widget: number, value_type: int }
+          - name: tiers
+            label: Sponsorship tiers (highest first)
+            widget: list
+            fields:
+              - { name: name, label: Tier name, widget: string }
+              - { name: amount, label: Amount, widget: string, hint: "e.g. $1,000+" }
+              - { name: featured, label: Highlight this tier, widget: boolean, default: false, required: false }
+              - { name: benefits, label: Benefits, widget: list }
+          - { name: in_kind_intro, label: In-kind intro, widget: text }
+          - { name: in_kind, label: In-kind ideas, widget: list }
+          - name: steps
+            label: How to sponsor (steps in order)
+            widget: list
+            fields:
+              - { name: title, label: Step, widget: string }
+              - { name: text, label: Description, widget: text }

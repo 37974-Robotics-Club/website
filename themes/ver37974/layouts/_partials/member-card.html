@@ -1,0 +1,16 @@
+{{/* Only first names are shown. A photo appears only when photo_consent is true. */}}
+{{ $name := .Title }}
+<li class="member" data-tags="{{ delimit (.Params.subteams | default slice) "|" }}">
+  <div class="member__photo">
+    {{ if and .Params.photo .Params.photo_consent }}
+      {{ partial "img.html" (dict "page" . "src" .Params.photo "fill" "320x320" "alt" (printf "Photo of %s" $name)) }}
+    {{ else }}
+      <span class="member__mono" aria-hidden="true">{{ substr $name 0 1 | upper }}</span>
+    {{ end }}
+  </div>
+  <h3>{{ $name }}</h3>
+  {{ with .Params.role }}<p class="member__role">{{ . }}</p>{{ end }}
+  {{ with .Params.subteams }}<p class="member__team">{{ delimit . ", " }}</p>{{ end }}
+  {{ with .Params.grade }}<p class="member__team">Grade {{ . }}{{ with $.Params.joined }}, joined {{ . }}{{ end }}</p>{{ end }}
+  {{ with .Params.bio }}<p class="member__bio">{{ . }}</p>{{ end }}
+</li>

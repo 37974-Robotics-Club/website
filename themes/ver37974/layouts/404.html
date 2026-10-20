@@ -1,0 +1,8 @@
+{{ define "main" }}
+<div class="wrap notfound">
+  <img src="{{ "images/logo.png" | relURL }}" alt="">
+  <h1>This page isn't in this version</h1>
+  <p class="lead" style="margin-inline:auto">It may have moved, or the link has a typo.</p>
+  <div class="btn-row" style="justify-content:center"><a class="btn btn--primary" href="{{ "" | relURL }}">Go to the home page</a></div>
+</div>
+{{ end }}

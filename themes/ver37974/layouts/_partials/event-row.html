@@ -1,0 +1,12 @@
+{{ $s := time.AsTime .Params.start }}
+<li>
+  <div class="row">
+    <div class="row__when"><time class="event-date" datetime="{{ $s.Format "2006-01-02" }}"><span class="event-date__day">{{ $s.Format "2" }}</span><span class="event-date__mon">{{ $s.Format "Jan 2006" }}</span></time></div>
+    <div>
+      {{ with .Params.event_type }}<span class="kind kind--{{ . | urlize }}">{{ . }}</span>{{ end }}
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <p>{{ with .Params.location }}{{ . }}{{ end }}{{ if not (eq ($s.Format "15:04") "00:00") }}, {{ $s.Format "3:04 pm" }}{{ end }}{{ with .Params.end }}{{ $e := time.AsTime . }}{{ if ne ($e.Format "2006-01-02") ($s.Format "2006-01-02") }} to {{ partial "date.html" $e }}{{ end }}{{ end }}</p>
+      {{ with .Params.result }}<p class="award" style="margin-top:.35rem">{{ . }}</p>{{ end }}
+    </div>
+  </div>
+</li>

@@ -1,0 +1,16 @@
+<section class="season-hero">
+  <div class="season-hero__img">
+    {{ with .Params.image }}{{ partial "img.html" (dict "page" $ "src" . "fill" "800x600" "alt" ($.Params.image_alt | default "Our robot") "eager" true) }}{{ else }}<img class="placeholder" src="{{ "images/logo.png" | relURL }}" alt="">{{ end }}
+  </div>
+  <div>
+    {{ if ne page.RelPermalink .RelPermalink }}
+    <p class="hero__kicker" style="margin-bottom:.5rem">{{ .Params.season }} season{{ with .Params.game }}: {{ . }}{{ end }}</p>
+    <h2>{{ .Params.robot_name | default .Title }}</h2>
+    {{ end }}
+    {{ with .Params.summary }}<p class="lead">{{ . }}</p>{{ end }}
+    {{ with .Params.specs }}
+    <dl class="specs" style="margin-top:1.5rem">{{ range . }}<dt>{{ .label }}</dt><dd>{{ .value }}</dd>{{ end }}</dl>
+    {{ end }}
+    {{ if ne page.RelPermalink .RelPermalink }}<div class="btn-row"><a class="btn btn--primary" href="{{ .RelPermalink }}">See the version history</a></div>{{ end }}
+  </div>
+</section>

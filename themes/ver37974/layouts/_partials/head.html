@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{ $title := cond .IsHome (printf "%s | FIRST Tech Challenge team %s" site.Params.teamName site.Params.teamNumber) (printf "%s | %s" .Title site.Params.teamName) }}
+<title>{{ $title }}</title>
+{{ $desc := .Description | default .Params.summary | default (cond .IsHome site.Params.description .Summary) | default site.Params.description | plainify | htmlUnescape | truncate 160 }}
+<meta name="description" content="{{ $desc }}">
+<meta name="theme-color" content="#002147">
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="icon" href="{{ "images/favicon-32.png" | relURL }}" sizes="32x32">
+<link rel="icon" href="{{ "images/icon-192.png" | relURL }}" sizes="192x192">
+<link rel="apple-touch-icon" href="{{ "images/apple-touch-icon.png" | relURL }}">
+{{ range .AlternativeOutputFormats -}}
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{ end -}}
+
+{{/* Social sharing preview */}}
+{{ $og := "images/og-default.png" | absURL }}
+{{ with .Params.cover }}{{ with $.Resources.GetMatch . }}{{ $og = (.Fill "1200x630 Center").Permalink }}{{ else }}{{ $og = . | absURL }}{{ end }}{{ end }}
+<meta property="og:type" content="{{ cond .IsPage "article" "website" }}">
+<meta property="og:site_name" content="{{ site.Params.teamName }}">
+<meta property="og:title" content="{{ cond .IsHome site.Params.teamName .Title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ $og }}">
+<meta name="twitter:card" content="summary_large_image">
+
+
+{{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{ with resources.Get "css/custom.css" }}{{ $c := . | minify | fingerprint }}<link rel="stylesheet" href="{{ $c.RelPermalink }}">{{ end }}

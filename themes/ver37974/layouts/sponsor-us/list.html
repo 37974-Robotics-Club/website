@@ -1,0 +1,92 @@
+{{ define "main" }}
+{{ $d := site.Data.sponsorship }}
+{{ partial "page-head.html" (dict "page" .) }}
+<div class="wrap">
+  {{/* Why sponsor */}}
+  <section class="split split--wide-left" style="margin-bottom:var(--section)">
+    <div>
+      <h2>Why sponsor a student robotics team</h2>
+      <div class="prose">{{ .Content }}</div>
+    </div>
+    {{ with .Params.reasons }}
+    <ul class="values" style="grid-template-columns:1fr">
+      {{ range . }}<li><h3>{{ .title }}</h3><p>{{ .text }}</p></li>{{ end }}
+    </ul>
+    {{ end }}
+  </section>
+
+  {{/* Where the money goes */}}
+  {{ with $d.budget }}
+  <section style="margin-bottom:var(--section)">
+    <div class="split">
+      <div>
+        <h2>Where your money goes</h2>
+        <p class="lead">{{ $d.budget_intro | default "This is our planned budget for one season. Sponsorship covers the parts students can't fund through fees alone." }}</p>
+      </div>
+      <div class="table-scroll">
+        {{ $total := 0 }}{{ range . }}{{ $total = add $total .amount }}{{ end }}
+        <table class="budget">
+          <thead><tr><th>Item</th><th>Per season</th></tr></thead>
+          <tbody>
+            {{ range . }}
+            <tr><td>{{ .item }}{{ with .note }}<small>{{ . }}</small>{{ end }}<div class="bar" aria-hidden="true"><span style="width: {{ math.Round (mul (div (float .amount) $total) 100) }}%"></span></div></td><td>${{ lang.FormatNumber 0 .amount }}</td></tr>
+            {{ end }}
+          </tbody>
+          <tfoot><tr><td>Total</td><td>${{ lang.FormatNumber 0 $total }}</td></tr></tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* Tiers */}}
+  {{ with $d.tiers }}
+  <section style="margin-bottom:var(--section)">
+    <div class="sec-head"><h2>What sponsorship looks like</h2><p class="muted">Amounts are per season. Every level is welcome.</p></div>
+    <div class="tiers" style="--cols: {{ len . }}">
+      {{ range $i, $t := . }}
+      <div class="tier-card{{ if .featured }} is-featured{{ end }}">
+        <h3>{{ .name }}</h3>
+        <p class="tier-card__amt">{{ .amount }}{{ with .per }} <small>{{ . }}</small>{{ end }}</p>
+        <ul class="tri-list">{{ range .benefits }}<li>{{ . }}</li>{{ end }}</ul>
+      </div>
+      {{ end }}
+    </div>
+    {{ with $d.in_kind }}
+    <div class="split" style="margin-top:3rem">
+      <div><h3>Not a cash sponsor?</h3><p class="muted">{{ $d.in_kind_intro | default "In-kind gifts count at their fair value toward a sponsorship level." }}</p></div>
+      <ul class="tri-list">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+    </div>
+    {{ end }}
+  </section>
+  {{ end }}
+
+  {{/* How it works: a real sequence, so it's numbered */}}
+  {{ with $d.steps }}
+  <section style="margin-bottom:var(--section)">
+    <div class="sec-head"><h2>How to sponsor us</h2></div>
+    <ol class="steps">{{ range . }}<li><strong>{{ .title }}</strong><p>{{ .text }}</p></li>{{ end }}</ol>
+  </section>
+  {{ end }}
+
+  <section class="note" style="margin-bottom:var(--section); max-width:48rem">
+    {{ if site.Params.registeredCharity }}
+      <p style="margin:0"><strong>Tax receipts.</strong> {{ site.Params.legalName }} is a registered charity. We issue official donation receipts for eligible gifts.</p>
+    {{ else }}
+      <p style="margin:0"><strong>About tax receipts.</strong> {{ site.Params.legalName }} is a not-for-profit corporation, not a registered charity, so we can't issue official donation receipts. We'll send an invoice or a letter of acknowledgement for your records; ask your accountant how to treat it for your business.</p>
+    {{ end }}
+  </section>
+
+  {{/* Contact for sponsors */}}
+  <section id="sponsor-contact" class="section" style="padding-top:0">
+    <div class="split">
+      <div>
+        <h2>Talk to us about sponsoring</h2>
+        <p class="lead">{{ .Params.contact_text | default "Tell us a little about your organization and we'll send our sponsorship package, or set up a visit to see the robot in person." }}</p>
+        {{ if site.Params.formAction }}{{ with site.Params.sponsorEmail }}<p>Prefer email? Write to <a href="mailto:{{ . }}">{{ . }}</a>.</p>{{ end }}{{ end }}
+      </div>
+      <div>{{ partial "contact-form.html" (dict "kind" "sponsor" "id" "sponsor-form") }}</div>
+    </div>
+  </section>
+</div>
+{{ end }}

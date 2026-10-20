@@ -1,0 +1,13 @@
+{{ $d := site.Data.sponsorship.cta }}
+<section class="cta-band">
+  <div class="wrap cta-band__inner">
+    <div>
+      <h2>{{ $d.title | default "Help us build the next version" }}</h2>
+      <p>{{ $d.text | default "Sponsors pay for the parts, field elements and competition fees that students can't cover on their own." }}</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="{{ "sponsor-us/" | relURL }}">See sponsorship options</a>
+      <a class="btn btn--ghost" href="{{ "sponsors/" | relURL }}">Our sponsors</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+{{/* Responsive image.
+     dict "page" . "src" "path" "alt" "..." "width" 800 "fill" "600x400" "class" "" "eager" false */}}
+{{- $r := partial "image-resolve.html" (dict "page" .page "src" .src) -}}
+{{- $alt := .alt | default "" -}}
+{{- $w := .width | default 800 -}}
+{{- $loading := cond (.eager | default false) "eager" "lazy" -}}
+{{- if $r -}}
+  {{- if eq $r.MediaType.SubType "gif" -}}
+    <img src="{{ $r.RelPermalink }}" alt="{{ $alt }}" width="{{ $r.Width }}" height="{{ $r.Height }}" loading="{{ $loading }}"{{ with .class }} class="{{ . }}"{{ end }}>
+  {{- else if .fill -}}
+    {{- $parts := split .fill "x" -}}
+    {{- $fw := int (index $parts 0) -}}{{- $fh := int (index $parts 1) -}}
+    {{- $one := $r.Fill (printf "%dx%d webp Smart" $fw $fh) -}}
+    {{- $two := $r.Fill (printf "%dx%d webp Smart" (mul $fw 2) (mul $fh 2)) -}}
+    <img src="{{ $one.RelPermalink }}" srcset="{{ $one.RelPermalink }} 1x, {{ $two.RelPermalink }} 2x" width="{{ $one.Width }}" height="{{ $one.Height }}" alt="{{ $alt }}" loading="{{ $loading }}" decoding="async"{{ with .class }} class="{{ . }}"{{ end }}>
+  {{- else -}}
+    {{- $set := slice -}}
+    {{- range (slice 480 800 1200 1600) -}}{{- if or (le . $r.Width) (eq . 480) -}}{{- $i := $r.Resize (printf "%dx webp" (cond (le . $r.Width) . $r.Width)) -}}{{- $set = $set | append (printf "%s %dw" $i.RelPermalink $i.Width) -}}{{- end -}}{{- end -}}
+    {{- $def := $r.Resize (printf "%dx webp" (cond (le $w $r.Width) $w $r.Width)) -}}
+    <img src="{{ $def.RelPermalink }}" srcset="{{ delimit $set ", " }}" sizes="(max-width: {{ $w }}px) 100vw, {{ $w }}px" width="{{ $def.Width }}" height="{{ $def.Height }}" alt="{{ $alt }}" loading="{{ $loading }}" decoding="async"{{ with .class }} class="{{ . }}"{{ end }}>
+  {{- end -}}
+{{- else if .src -}}
+  <img src="{{ partial "link.html" .src }}" alt="{{ $alt }}" loading="{{ $loading }}"{{ with .class }} class="{{ . }}"{{ end }}>
+{{- end -}}

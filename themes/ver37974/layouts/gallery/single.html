@@ -1,0 +1,57 @@
+{{ define "main" }}
+{{ $meta := partial "date.html" .Date }}{{ with .Params.event }}{{ $meta = printf "%s, %s" $meta . }}{{ end }}
+{{ partial "page-head.html" (dict "page" . "meta" $meta "crumb" (dict "url" ("gallery/" | relURL) "name" "gallery") "lead" .Params.summary) }}
+<div class="wrap section" style="padding-top:0">
+  {{ with .Content }}<div class="prose" style="margin-bottom:2.5rem">{{ . }}</div>{{ end }}
+
+  {{/* Photos: listed in front matter (with captions) or, if none are listed, every image in the album folder. */}}
+  {{ $photos := slice }}
+  {{ with .Params.photos }}
+    {{ range . }}{{ $photos = $photos | append (dict "src" .image "caption" (.caption | default "")) }}{{ end }}
+  {{ else }}
+    {{ range .Resources.ByType "image" }}{{ $photos = $photos | append (dict "src" .Name "caption" "") }}{{ end }}
+  {{ end }}
+
+  {{ with $photos }}
+  <ul class="photo-grid">
+    {{ range . }}
+      {{ $r := partial "image-resolve.html" (dict "page" $ "src" .src) }}
+      {{ $full := "" }}{{ with $r }}{{ $full = (.Fit "1800x1800 webp").RelPermalink }}{{ else }}{{ $full = partial "link.html" .src }}{{ end }}
+      <li><button type="button" data-full="{{ $full }}" data-caption="{{ .caption }}" aria-label="Open photo{{ with .caption }}: {{ . }}{{ end }}">
+        {{ partial "img.html" (dict "page" $ "src" .src "fill" "400x400" "alt" .caption) }}
+      </button></li>
+    {{ end }}
+  </ul>
+  <dialog class="lightbox" aria-label="Photo viewer">
+    <div class="lightbox__inner">
+      <img src="" alt="">
+      <p class="lightbox__caption"></p>
+      <button class="lightbox__btn lightbox__close" type="button" aria-label="Close">&times;</button>
+      <button class="lightbox__btn lightbox__prev" type="button" aria-label="Previous photo">&lsaquo;</button>
+      <button class="lightbox__btn lightbox__next" type="button" aria-label="Next photo">&rsaquo;</button>
+    </div>
+  </dialog>
+  {{ end }}
+
+  {{ with .Params.videos }}
+  <section style="margin-top:var(--section)">
+    <div class="sec-head"><h2>Videos</h2></div>
+    <ul class="video-grid">
+      {{ range . }}
+        {{ $id := .youtube | replaceRE `^.*(?:youtu\.be/|v=|embed/|shorts/)([A-Za-z0-9_-]{11}).*$` "$1" }}
+        <li>
+          <div class="video">
+            <button class="video__play" type="button" data-id="{{ $id }}" data-title="{{ .title }}">
+              <img src="https://i.ytimg.com/vi/{{ $id }}/hqdefault.jpg" alt="" loading="lazy">
+              <span>Play video</span>
+            </button>
+          </div>
+          {{ with .title }}<p class="video-title">{{ . }}</p>{{ end }}
+        </li>
+      {{ end }}
+    </ul>
+    <p class="small muted" style="margin-top:1rem">Videos load from YouTube only when you press play.</p>
+  </section>
+  {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,72 @@
+# Sponsorship page content. Edit the numbers to match your real budget.
+# Tiers are listed from highest to lowest. The order here also sets the
+# order on the Sponsors page.
+
+cta:
+  title: Help us build the next version
+  text: Sponsors pay for the parts, field elements and competition fees that students can't cover on their own.
+
+budget_intro: Our planned budget for one season. Registration and parts are the big costs; everything else keeps the team safe and on the road.
+budget:
+  - item: FIRST season registration
+    note: Paid to FIRST each season
+    amount: 300
+  - item: Robot parts and electronics
+    note: Motors, servos, control hub, sensors, structural kit
+    amount: 2500
+  - item: Field elements and practice field
+    note: Tiles and this season's game pieces
+    amount: 900
+  - item: Qualifier and championship fees
+    amount: 600
+  - item: Tools, safety gear and batteries
+    note: Including fire-safe battery storage
+    amount: 500
+  - item: Liability insurance
+    amount: 700
+  - item: Outreach materials and team shirts
+    amount: 400
+
+tiers:
+  - name: Gold
+    amount: "$2,000+"
+    featured: true
+    benefits:
+      - Large logo on the robot and team shirts
+      - Top placement on our website and pit display
+      - A visit from the team with the robot
+      - Thank-you posts on our social channels
+  - name: Silver
+    amount: "$1,000+"
+    benefits:
+      - Logo on the robot and website
+      - Logo on our pit display
+      - Thank-you post on social channels
+  - name: Bronze
+    amount: "$500+"
+    benefits:
+      - Logo on our website
+      - Name on the robot
+      - Season update emails from the team
+  - name: Supporter
+    amount: "Any amount"
+    benefits:
+      - Name on our website
+      - Season update emails from the team
+
+in_kind_intro: In-kind gifts count at their fair value toward a sponsorship level.
+in_kind:
+  - Parts, tools or 3D-printing filament
+  - Machining, laser cutting or printing services
+  - A workshop visit or mentoring from your engineers
+  - Meeting or storage space
+
+steps:
+  - title: Get in touch
+    text: Send the form below or email us. We'll reply with our sponsorship package.
+  - title: Pick a level
+    text: Choose a tier, an in-kind gift, or a mix. We'll confirm what you'll get in writing.
+  - title: Send your support
+    text: Pay by cheque or e-transfer to the Club's bank account. We send an invoice or acknowledgement letter.
+  - title: See it in action
+    text: Your logo goes on the website and robot, and you get updates through the season.

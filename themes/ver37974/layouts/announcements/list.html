@@ -1,0 +1,14 @@
+{{ define "main" }}
+{{ partial "page-head.html" (dict "page" .) }}
+<div class="wrap section" style="padding-top:0">
+  {{ with .Content }}<div class="prose" style="margin-bottom:2.5rem">{{ . }}</div>{{ end }}
+  {{ $pinned := where .Pages "Params.pinned" true }}
+  {{ $rest := where .Pages "Params.pinned" "ne" true }}
+  {{ $paginator := .Paginate $rest 20 }}
+  <ul class="row-list">
+    {{ if eq $paginator.PageNumber 1 }}{{ range $pinned }}{{ partial "announcement-row.html" . }}{{ end }}{{ end }}
+    {{ range $paginator.Pages }}{{ partial "announcement-row.html" . }}{{ end }}
+  </ul>
+  {{ partial "pager.html" $paginator }}
+</div>
+{{ end }}

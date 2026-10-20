@@ -1,0 +1,8 @@
+<article class="post-card">
+  <a class="post-card__img{{ if not .Params.cover }} post-card__img--empty{{ end }}" href="{{ .RelPermalink }}" tabindex="-1" aria-hidden="true">
+    {{ with .Params.cover }}{{ partial "img.html" (dict "page" $ "src" . "fill" "600x400" "alt" "") }}{{ else }}<img src="{{ "images/logo.png" | relURL }}" alt="">{{ end }}
+  </a>
+  <p class="post-card__meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date.html" .Date }}</time>{{ with .Params.author }}, by {{ . }}{{ end }}</p>
+  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  <p>{{ .Params.summary | default .Summary | plainify | truncate 140 }}</p>
+</article>

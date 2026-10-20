@@ -1,0 +1,42 @@
+{{ define "main" }}
+{{ partial "page-head.html" (dict "page" .) }}
+<div class="wrap section" style="padding-top:0">
+  {{ with .Content }}<div class="thanks" style="margin-bottom:var(--section)">{{ . }}</div>{{ end }}
+  {{ $active := partial "sponsors-sorted.html" . }}
+  {{ $listed := slice }}
+  {{ range $i, $t := site.Data.sponsorship.tiers }}
+    {{ $in := where $active "Params.tier" $t.name }}
+    {{ with $in }}
+    <section class="tier">
+      <h2>{{ $t.name }}{{ with $t.amount }} <span>{{ . }}</span>{{ end }}</h2>
+      <ul class="logo-wall logo-wall--{{ add (cond (lt $i 3) $i 3) 1 }}">
+        {{ range . }}{{ $listed = $listed | append . }}
+        <li class="sponsor">
+          {{ partial "sponsor-logo.html" . }}
+          <h3>{{ .Title }}</h3>
+          {{ with .Params.message }}<p>{{ . }}</p>{{ end }}
+        </li>
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+  {{ end }}
+  {{ $other := slice }}{{ range $active }}{{ if not (in $listed .) }}{{ $other = $other | append . }}{{ end }}{{ end }}
+  {{ with $other }}
+  <section class="tier">
+    <h2>Supporters</h2>
+    <ul class="logo-wall logo-wall--4">{{ range . }}<li class="sponsor">{{ partial "sponsor-logo.html" . }}<h3>{{ .Title }}</h3>{{ with .Params.message }}<p>{{ . }}</p>{{ end }}</li>{{ end }}</ul>
+  </section>
+  {{ end }}
+  {{ if not $active }}<p class="empty">Our first sponsors will appear here. <a href="{{ "sponsor-us/" | relURL }}">Could it be you?</a></p>{{ end }}
+
+  {{ $past := where .Pages "Params.active" false }}
+  {{ with $past }}
+  <section class="tier">
+    <h2 style="font-size:var(--step-2)">With thanks to past sponsors</h2>
+    <p class="past-sponsors">{{ range $i, $p := . }}{{ if $i }}, {{ end }}{{ .Title }}{{ end }}</p>
+  </section>
+  {{ end }}
+</div>
+{{ partial "cta-band.html" . }}
+{{ end }}

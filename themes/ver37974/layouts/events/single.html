@@ -1,0 +1,18 @@
+{{ define "main" }}
+{{ $s := time.AsTime .Params.start }}
+{{ $meta := .Params.event_type | default "Event" }}
+{{ partial "page-head.html" (dict "page" . "meta" $meta "crumb" (dict "url" ("events/" | relURL) "name" "events") "lead" .Params.summary) }}
+<article class="prose-wrap section" style="padding-top:0">
+  <dl class="specs" style="margin-bottom:2.5rem">
+    <dt>When</dt><dd>{{ partial "date.html" $s }}{{ if ne ($s.Format "15:04") "00:00" }}, {{ $s.Format "3:04 pm" }}{{ end }}{{ with .Params.end }}{{ $e := time.AsTime . }} to {{ if ne ($e.Format "2006-01-02") ($s.Format "2006-01-02") }}{{ partial "date.html" $e }}{{ end }}{{ if ne ($e.Format "15:04") "00:00" }} {{ $e.Format "3:04 pm" }}{{ end }}{{ end }}</dd>
+    {{ with .Params.location }}<dt>Where</dt><dd>{{ . }}{{ with $.Params.address }}<br><span class="muted" style="font-weight:400">{{ . }}</span>{{ end }}</dd>{{ end }}
+    {{ with .Params.result }}<dt>Result</dt><dd class="award">{{ . }}</dd>{{ end }}
+  </dl>
+  <div class="prose">{{ .Content }}</div>
+  <div class="btn-row">
+    {{ with .Params.link }}<a class="btn btn--primary" href="{{ . }}" rel="noopener">Official event page</a>{{ end }}
+    {{ with .Params.address }}<a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query={{ . | urlquery }}" rel="noopener">Directions</a>{{ end }}
+    {{ with .Params.album }}<a class="btn btn--ghost" href="{{ partial "link.html" . }}">Photos</a>{{ end }}
+  </div>
+</article>
+{{ end }}

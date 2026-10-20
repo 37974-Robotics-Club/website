@@ -1,0 +1,126 @@
+{{ define "main" }}
+{{ $h := .Params.hero }}
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div>
+      {{ with $h.kicker }}<p class="hero__kicker">{{ . }}</p>{{ end }}
+      <h1>{{ $h.title | default site.Params.teamName }}</h1>
+      {{ with $h.text }}<p class="lead">{{ . | markdownify }}</p>{{ end }}
+      <div class="btn-row">
+        {{ range $i, $b := $h.buttons }}
+          <a class="btn {{ if eq $i 0 }}btn--primary{{ else }}btn--ghost{{ end }}" href="{{ partial "link.html" .url }}">{{ .label }}</a>
+        {{ end }}
+      </div>
+    </div>
+    <div class="hero__logo">
+      <img src="{{ "images/logo-512.png" | relURL }}" alt="{{ site.Params.teamName }} logo: a gold triangle with a crown and two circling arrows, labelled Ver. {{ site.Params.teamNumber }}" width="512" height="512">
+    </div>
+  </div>
+</section>
+
+{{/* Right now: next event + latest announcement */}}
+{{ $next := index (partial "upcoming-events.html" .) 0 }}
+{{ $ann := where site.RegularPages "Section" "announcements" }}
+{{ $pinned := where $ann "Params.pinned" true }}
+{{ $latest := index (cond (gt (len $pinned) 0) $pinned $ann) 0 }}
+{{ if or $next $latest }}
+<section class="section" style="padding-top:0">
+  <div class="wrap now">
+    <div class="now__panel">
+      <h2>Next event</h2>
+      {{ with $next }}
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p class="muted" style="margin:0">{{ partial "date.html" (time.AsTime .Params.start) }}{{ with .Params.location }}, {{ . }}{{ end }}</p>
+      {{ else }}
+        <p class="muted" style="margin:0">Nothing scheduled yet. <a href="{{ "events/" | relURL }}">See past events</a></p>
+      {{ end }}
+    </div>
+    <div class="now__panel">
+      <h2>Latest announcement</h2>
+      {{ with $latest }}
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p class="muted" style="margin:0">{{ partial "date.html" .Date }}</p>
+      {{ else }}
+        <p class="muted" style="margin:0">No announcements yet.</p>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* Current robot version */}}
+{{ with partial "current-season.html" . }}
+{{ $season := . }}
+{{ $v := index (last 1 (.Params.versions | default slice)) 0 }}
+<section class="section band">
+  <div class="wrap split split--wide-left">
+    <div>
+      <p class="hero__kicker" style="margin-bottom:.75rem">{{ .Params.season }} season{{ with .Params.game }}: {{ . }}{{ end }}</p>
+      <h2>{{ .Params.robot_name | default "This season's robot" }}</h2>
+      {{ with $v }}
+        <p style="margin:1rem 0"><span class="ver ver--current ver--lg">{{ .version }}<small>current</small></span></p>
+        <p class="lead">{{ .summary }}</p>
+      {{ else }}
+        <p class="lead">{{ $season.Params.summary }}</p>
+      {{ end }}
+      <div class="btn-row">
+        <a class="btn btn--primary" href="{{ .RelPermalink }}">See every version</a>
+        <a class="btn btn--ghost" href="{{ "portfolio/" | relURL }}">Read the engineering portfolio</a>
+      </div>
+    </div>
+    <div class="season-hero__img">
+      {{ with .Params.image }}{{ partial "img.html" (dict "page" $season "src" . "fill" "720x540" "alt" ($season.Params.image_alt | default "Our robot")) }}{{ else }}<img class="placeholder" src="{{ "images/logo.png" | relURL }}" alt="">{{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* What we do */}}
+{{ with .Params.pillars }}
+<section class="section">
+  <div class="wrap">
+    <div class="pillars">
+      {{ range . }}{{ $p := . }}
+      <div class="pillar">
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+        {{ with .url }}<a href="{{ partial "link.html" . }}">{{ $p.link_label | default "Learn more" }}</a>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* From the blog */}}
+{{ $posts := first 3 (where site.RegularPages "Section" "blog") }}
+{{ with $posts }}
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>From the build log</h2>
+      <a href="{{ "blog/" | relURL }}">All blog posts</a>
+    </div>
+    <div class="post-grid">{{ range . }}{{ partial "post-card.html" . }}{{ end }}</div>
+  </div>
+</section>
+{{ end }}
+
+{{/* Sponsors */}}
+{{ $sp := partial "sponsors-sorted.html" . }}
+{{ with $sp }}
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Built with help from</h2>
+      <a href="{{ "sponsors/" | relURL }}">Meet our sponsors</a>
+    </div>
+    <ul class="logo-strip">
+      {{ range . }}<li>{{ partial "sponsor-logo.html" . }}</li>{{ end }}
+    </ul>
+  </div>
+</section>
+{{ end }}
+
+{{ partial "cta-band.html" . }}
+{{ end }}

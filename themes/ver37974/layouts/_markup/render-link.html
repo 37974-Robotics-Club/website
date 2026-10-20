@@ -1,0 +1,5 @@
+{{- $u := urls.Parse .Destination -}}
+{{- $href := .Destination -}}
+{{- if and (not $u.IsAbs) (strings.HasPrefix .Destination "/") -}}{{- $href = relURL (strings.TrimPrefix "/" .Destination) -}}{{- end -}}
+<a href="{{ $href | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $u.IsAbs }} rel="noopener"{{ end }}>{{ .Text }}</a>
+{{- /* chomp */ -}}

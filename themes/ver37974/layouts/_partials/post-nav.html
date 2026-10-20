@@ -1,0 +1,6 @@
+{{ if or .PrevInSection .NextInSection }}
+<nav class="post-nav" aria-label="More posts">
+  <div>{{ with .NextInSection }}<a href="{{ .RelPermalink }}"><small>Newer</small>{{ .Title }}</a>{{ end }}</div>
+  <div class="post-nav__next">{{ with .PrevInSection }}<a href="{{ .RelPermalink }}"><small>Older</small>{{ .Title }}</a>{{ end }}</div>
+</nav>
+{{ end }}

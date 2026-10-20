@@ -1,0 +1,33 @@
+{{/* dict "kind" "general|sponsor" "id" "form-id" */}}
+{{ $sponsor := eq .kind "sponsor" }}
+{{ $to := cond $sponsor (site.Params.sponsorEmail | default site.Params.email) site.Params.email }}
+{{ with site.Params.formAction }}
+<form class="form" action="{{ . }}" method="POST" id="{{ $.id | default "contact-form" }}">
+  <input type="hidden" name="_subject" value="{{ cond $sponsor "Sponsorship enquiry" "Website message" }} for team {{ site.Params.teamNumber }}">
+  <input type="hidden" name="form" value="{{ $.kind }}">
+  <div class="form__row">
+    <div class="field"><label for="{{ $.kind }}-name">Your name</label><input id="{{ $.kind }}-name" name="name" autocomplete="name" required></div>
+    <div class="field"><label for="{{ $.kind }}-email">Email</label><input id="{{ $.kind }}-email" name="email" type="email" autocomplete="email" required></div>
+  </div>
+  {{ if $sponsor }}
+  <div class="form__row">
+    <div class="field"><label for="sp-org">Company or organization</label><input id="sp-org" name="organization" autocomplete="organization"></div>
+    <div class="field"><label for="sp-tier">Interested in <span>(optional)</span></label>
+      <select id="sp-tier" name="interest">
+        <option value="">Not sure yet</option>
+        {{ range site.Data.sponsorship.tiers }}<option>{{ .name }}{{ with .amount }} ({{ . }}){{ end }}</option>{{ end }}
+        <option>In-kind donation (parts, tools, services)</option>
+        <option>Mentoring or a workshop visit</option>
+      </select>
+    </div>
+  </div>
+  {{ end }}
+  <div class="field"><label for="{{ $.kind }}-msg">Message</label><textarea id="{{ $.kind }}-msg" name="message" required></textarea></div>
+  <p class="hp" aria-hidden="true"><label>Leave this empty <input name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
+  <div><button class="btn btn--primary" type="submit">{{ cond $sponsor "Send sponsorship enquiry" "Send message" }}</button></div>
+  <p class="small muted" style="margin:0">We reply within a few days. Messages go to the team's adult coaches and directors.</p>
+</form>
+{{ else }}
+<p>Email us at <a href="mailto:{{ $to }}{{ if $sponsor }}?subject=Sponsorship%20enquiry{{ end }}">{{ $to }}</a>. Messages go to the team's adult coaches and directors, and we reply within a few days.</p>
+<p><a class="btn btn--primary" href="mailto:{{ $to }}{{ if $sponsor }}?subject=Sponsorship%20enquiry{{ end }}">{{ cond $sponsor "Email us about sponsoring" "Email the team" }}</a></p>
+{{ end }}

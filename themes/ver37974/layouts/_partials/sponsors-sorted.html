@@ -1,0 +1,11 @@
+{{/* Active sponsors, ordered by the tier order in data/sponsorship.yaml, then by weight and name. */}}
+{{- $all := where site.RegularPages "Section" "sponsors" -}}
+{{- $active := slice -}}{{- range $all -}}{{- if ne .Params.active false -}}{{- $active = $active | append . -}}{{- end -}}{{- end -}}
+{{- $out := slice -}}
+{{- $names := slice -}}
+{{- range site.Data.sponsorship.tiers -}}
+  {{- $t := .name -}}{{- $names = $names | append $t -}}
+  {{- range (where $active "Params.tier" $t).ByWeight -}}{{- $out = $out | append . -}}{{- end -}}
+{{- end -}}
+{{- range $active -}}{{- if not (in $names .Params.tier) -}}{{- $out = $out | append . -}}{{- end -}}{{- end -}}
+{{- return $out -}}

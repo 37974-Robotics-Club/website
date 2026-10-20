@@ -1,0 +1,9 @@
+<li>
+  <div class="row">
+    <div class="row__when"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date.html" .Date }}</time></div>
+    <div>
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if .Params.pinned }}<span class="pin">Pinned</span>{{ end }}</h3>
+      <p>{{ .Params.summary | default .Summary | plainify | truncate 180 }}</p>
+    </div>
+  </div>
+</li>

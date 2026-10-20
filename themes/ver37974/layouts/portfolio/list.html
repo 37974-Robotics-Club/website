@@ -1,0 +1,38 @@
+{{ define "main" }}
+{{ partial "page-head.html" (dict "page" .) }}
+<div class="wrap section" style="padding-top:0">
+  {{ $pdf := .Params.portfolio_pdf | default site.Params.portfolioPDF }}
+  <div class="pdf-callout">
+    <p>{{ .Params.pdf_text | default "Our engineering portfolio is the summary we hand to judges at competition. These journal entries are the full record behind it." }}</p>
+    {{ with $pdf }}<a class="btn btn--primary" href="{{ partial "link.html" . }}">Download the portfolio (PDF)</a>{{ else }}<span class="muted small">This season's portfolio PDF will be posted after our first qualifier.</span>{{ end }}
+  </div>
+  {{ with .Content }}<div class="prose" style="margin-bottom:2.5rem">{{ . }}</div>{{ end }}
+
+  {{ $subs := slice }}{{ range .Pages }}{{ with .Params.subsystem }}{{ $subs = $subs | append . }}{{ end }}{{ end }}
+  {{ $subs = $subs | uniq | sort }}
+  {{ $seasons := slice }}{{ range .Pages }}{{ with .Params.season }}{{ $seasons = $seasons | append . }}{{ end }}{{ end }}
+  {{ if gt (len $subs) 1 }}
+  <div class="filters" role="group" aria-label="Show entries about" data-filter-group="journal">
+    <button class="filter" type="button" data-value="all" aria-pressed="true">All entries</button>
+    {{ range $subs }}<button class="filter" type="button" data-value="{{ . }}" aria-pressed="false">{{ . }}</button>{{ end }}
+  </div>
+  {{ end }}
+
+  <ul class="row-list" id="journal">
+    {{ range .Pages }}
+    <li data-tags="{{ .Params.subsystem }}">
+      <div class="row">
+        <div class="row__when"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date.html" .Date }}</time></div>
+        <div>
+          <p class="journal-meta"><span class="subsys">{{ .Params.subsystem }}</span>{{ with .Params.season }}<span>{{ . }} season</span>{{ end }}{{ with .Params.authors }}<span>By {{ delimit . ", " " and " }}</span>{{ end }}</p>
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <p>{{ .Params.summary | default .Summary | plainify | truncate 200 }}</p>
+        </div>
+      </div>
+    </li>
+    {{ else }}
+    <li class="empty">No journal entries yet. Add one in the site editor under Engineering portfolio.</li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

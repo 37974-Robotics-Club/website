@@ -1,0 +1,6 @@
+{{ define "main" }}
+{{ partial "page-head.html" (dict "page" . "title" (printf "Posts tagged %s" .Title) "crumb" (dict "url" ("blog/" | relURL) "name" "blog")) }}
+<div class="wrap section" style="padding-top:0">
+  <div class="post-grid">{{ range .Pages }}{{ partial "post-card.html" . }}{{ end }}</div>
+</div>
+{{ end }}

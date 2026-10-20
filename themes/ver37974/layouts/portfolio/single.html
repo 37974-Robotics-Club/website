@@ -1,0 +1,10 @@
+{{ define "main" }}
+{{ $meta := printf "<span class=\"subsys\">%s</span>, %s" (.Params.subsystem | default "Journal") (partial "date.html" .Date) }}
+{{ with .Params.authors }}{{ $meta = printf "%s, by %s" $meta (delimit . ", " " and ") }}{{ end }}
+{{ partial "page-head.html" (dict "page" . "meta" $meta "crumb" (dict "url" ("portfolio/" | relURL) "name" "engineering portfolio") "lead" .Params.summary) }}
+<article class="prose-wrap section" style="padding-top:0">
+  {{ with .Params.cover }}<figure class="cover">{{ partial "img.html" (dict "page" $ "src" . "width" 1200 "alt" ($.Params.cover_alt | default "") "eager" true) }}</figure>{{ end }}
+  <div class="prose">{{ .Content }}</div>
+  {{ partial "post-nav.html" . }}
+</article>
+{{ end }}

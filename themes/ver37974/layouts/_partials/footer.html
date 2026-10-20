@@ -1,0 +1,31 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__grid">
+      <div>
+        <div class="footer-brand">
+          <img src="{{ "images/logo.png" | relURL }}" alt="" width="64" height="64">
+          <div><strong>{{ site.Params.teamName }}</strong><br><span class="muted">FIRST Tech Challenge team {{ site.Params.teamNumber }}, {{ site.Params.city }}</span></div>
+        </div>
+        {{ partial "social.html" . }}
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul class="links">
+          {{ range site.Menus.footer }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
+        </ul>
+      </div>
+      <div>
+        <h2>Get in touch</h2>
+        <ul class="links">
+          {{ with site.Params.email }}<li><a href="mailto:{{ . }}">{{ . }}</a></li>{{ end }}
+          {{ with site.Params.sponsorEmail }}<li><a href="mailto:{{ . }}">{{ . }}</a> <span class="muted">(sponsors)</span></li>{{ end }}
+          <li><a href="{{ "about/#contact" | relURL }}">All contact details</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fineprint">
+      <p>&copy; {{ now.Year }} {{ site.Params.legalName }}, a not-for-profit corporation under the Canada Not-for-profit Corporations Act.</p>
+      <p><em>FIRST</em>&reg; and <em>FIRST</em>&reg; Tech Challenge are registered trademarks of <em>FIRST</em>&reg; (For Inspiration and Recognition of Science and Technology), which is not responsible for the content of this site.</p>
+    </div>
+  </div>
+</footer>

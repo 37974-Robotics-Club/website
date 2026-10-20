@@ -1,0 +1,4 @@
+{{/* One sponsor's logo tile. Context: sponsor page. */}}
+{{ if .Params.website }}<a class="sponsor__logo" href="{{ .Params.website }}" rel="noopener sponsored">{{ else }}<div class="sponsor__logo">{{ end }}
+  {{ with .Params.logo }}{{ partial "img.html" (dict "page" $ "src" . "width" 400 "alt" (printf "%s logo" $.Title)) }}{{ else }}<span>{{ .Title }}</span>{{ end }}
+{{ if .Params.website }}</a>{{ else }}</div>{{ end }}

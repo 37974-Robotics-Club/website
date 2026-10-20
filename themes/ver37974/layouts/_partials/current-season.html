@@ -1,0 +1,4 @@
+{{- $seasons := where site.RegularPages "Section" "robot" -}}
+{{- $cur := index (where $seasons "Params.current" true) 0 -}}
+{{- if not $cur -}}{{- $cur = index ($seasons.ByDate.Reverse) 0 -}}{{- end -}}
+{{- return $cur -}}

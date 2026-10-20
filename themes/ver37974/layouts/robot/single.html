@@ -1,0 +1,50 @@
+{{ define "main" }}
+{{ partial "page-head.html" (dict "page" . "title" (.Params.robot_name | default .Title) "meta" (printf "%s season%s" .Params.season (cond (ne .Params.game nil) (printf ": %s" .Params.game) "")) "crumb" (dict "url" ("robot/" | relURL) "name" "robot") "lead" "") }}
+<div class="wrap section" style="padding-top:0">
+  {{ partial "season-summary.html" . }}
+
+  <div class="split split--wide-left" style="margin-top:var(--section)">
+    <section aria-labelledby="ver-h">
+      <h2 id="ver-h">Version history</h2>
+      <p class="muted" style="margin-bottom:2rem">Every robot we build is a new version. Here's what changed, and why.</p>
+      {{ $vs := .Params.versions | default slice }}
+      {{ $n := len $vs }}
+      <ol class="verlog" reversed>
+        {{ range $i, $v := (collections.Reverse $vs) }}
+        <li class="verlog__item{{ if eq $i 0 }} is-current{{ end }}">
+          <span class="ver verlog__tag{{ if eq $i 0 }} ver--current{{ end }}">{{ .version }}</span>
+          <div class="verlog__body">
+            <h3>{{ .title }}</h3>
+            {{ with .date }}<p class="verlog__date">{{ partial "date.html" (time.AsTime .) }}{{ if eq $i 0 }}, current version{{ end }}</p>{{ end }}
+            {{ with .summary }}<p>{{ . }}</p>{{ end }}
+            {{ with .changes }}<ul class="tri-list">{{ range . }}<li>{{ . | markdownify }}</li>{{ end }}</ul>{{ end }}
+            {{ with .journal }}<p class="small"><a href="{{ partial "link.html" . }}">Read the journal entry</a></p>{{ end }}
+          </div>
+        </li>
+        {{ end }}
+      </ol>
+    </section>
+    <aside>
+      {{ with .Params.results }}
+      <h2 style="font-size:var(--step-3)">Competition results</h2>
+      <div class="table-scroll">
+      <table class="results">
+        <thead><tr><th>Event</th><th>Result</th></tr></thead>
+        <tbody>
+          {{ range . }}<tr><td>{{ .event }}{{ with .date }}<br><span class="small muted">{{ partial "date.html" (time.AsTime .) }}</span>{{ end }}</td><td>{{ .result }}{{ with .award }}<br><span class="award">{{ . }}</span>{{ end }}</td></tr>{{ end }}
+        </tbody>
+      </table>
+      </div>
+      {{ end }}
+      {{ with .Params.links }}
+      <h2 style="font-size:var(--step-3); margin-top:2.5rem">Open source</h2>
+      <ul class="tri-list">{{ range . }}<li><a href="{{ .url }}">{{ .label }}</a></li>{{ end }}</ul>
+      {{ end }}
+    </aside>
+  </div>
+
+  {{ with .Content }}
+  <section class="prose" style="margin-top:var(--section)">{{ . }}</section>
+  {{ end }}
+</div>
+{{ end }}

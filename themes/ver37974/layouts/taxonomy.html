@@ -1,0 +1,6 @@
+{{ define "main" }}
+{{ partial "page-head.html" (dict "page" . "title" "Tags") }}
+<div class="wrap section" style="padding-top:0">
+  <ul class="tags">{{ range .Data.Terms.ByCount }}<li><a class="tag" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} ({{ .Count }})</a></li>{{ end }}</ul>
+</div>
+{{ end }}

@@ -1,0 +1,30 @@
+{{ define "main" }}
+{{ partial "page-head.html" (dict "page" .) }}
+<div class="wrap section" style="padding-top:0">
+  {{ $hours := 0 }}{{ $people := 0 }}
+  {{ range .Pages }}{{ $hours = add $hours (float (.Params.hours | default 0)) }}{{ $people = add $people (int (.Params.people_reached | default 0)) }}{{ end }}
+  {{ if .Pages }}
+  <ul class="tally" aria-label="Outreach totals">
+    <li><strong>{{ len .Pages }}</strong>{{ cond (eq (len .Pages) 1) "event" "events" }}</li>
+    {{ if gt $hours 0 }}<li><strong>{{ lang.FormatNumber 0 $hours }}</strong>volunteer hours</li>{{ end }}
+    {{ if gt $people 0 }}<li><strong>{{ lang.FormatNumber 0 $people }}</strong>people reached</li>{{ end }}
+  </ul>
+  {{ end }}
+  {{ with .Content }}<div class="prose" style="margin-bottom:2.5rem">{{ . }}</div>{{ end }}
+  <ul class="row-list">
+    {{ range .Pages }}
+    <li>
+      <div class="row">
+        <div class="row__when"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date.html" .Date }}</time></div>
+        <div>
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <p>{{ .Params.summary | default .Summary | plainify | truncate 200 }}</p>
+          <p class="journal-meta" style="margin-top:.5rem">{{ with .Params.location }}<span>{{ . }}</span>{{ end }}{{ with .Params.hours }}<span>{{ . }} volunteer hours</span>{{ end }}{{ with .Params.people_reached }}<span>{{ . }} people reached</span>{{ end }}</p>
+        </div>
+      </div>
+    </li>
+    {{ else }}<li class="empty">No outreach logged yet.</li>{{ end }}
+  </ul>
+</div>
+{{ partial "cta-band.html" . }}
+{{ end }}

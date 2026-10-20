@@ -1,0 +1,9 @@
+{{- $r := partial "image-resolve.html" (dict "page" .Page "src" .Destination) -}}
+{{- if $r -}}
+<figure>
+  {{ partial "img.html" (dict "page" .Page "src" .Destination "alt" .PlainText "width" 1200) }}
+  {{ with .Title }}<figcaption>{{ . }}</figcaption>{{ end }}
+</figure>
+{{- else -}}
+<img src="{{ .Destination | safeURL }}" alt="{{ .PlainText }}" loading="lazy"{{ with .Title }} title="{{ . }}"{{ end }}>
+{{- end -}}

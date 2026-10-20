@@ -1,0 +1,7 @@
+{{- /* Turns "/about/" into a link that also works when the site lives in a sub-folder (e.g. GitHub Pages). External links pass through. */ -}}
+{{- $u := . | default "" -}}
+{{- $out := $u -}}
+{{- if not (or (strings.HasPrefix $u "http") (strings.HasPrefix $u "mailto:") (strings.HasPrefix $u "#")) -}}
+  {{- $out = relURL (strings.TrimPrefix "/" $u) -}}
+{{- end -}}
+{{- return $out -}}

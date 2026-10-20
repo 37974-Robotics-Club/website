@@ -1,0 +1,55 @@
+{{ define "main" }}
+{{ partial "page-head.html" (dict "page" .) }}
+<div class="wrap">
+  <section class="split split--wide-left" style="margin-bottom:var(--section)">
+    <div class="prose">{{ .Content }}</div>
+    {{ with .Params.facts }}
+    <dl class="specs" style="align-self:start">
+      {{ range . }}<dt>{{ .label }}</dt><dd>{{ .value }}</dd>{{ end }}
+    </dl>
+    {{ end }}
+  </section>
+
+  {{ with .Params.values }}
+  <section style="margin-bottom:var(--section)">
+    <div class="sec-head"><h2>What we value</h2></div>
+    <ul class="values">
+      {{ range . }}<li><h3>{{ .title }}</h3><p>{{ .text }}</p></li>{{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  {{ with .Params.structure }}
+  <section style="margin-bottom:var(--section)">
+    <div class="sec-head">
+      <h2>{{ .title | default "How the team works" }}</h2>
+      <a href="{{ "members/" | relURL }}">See who's in each role</a>
+    </div>
+    {{ with .text }}<div class="prose" style="margin-bottom:2rem">{{ . | markdownify }}</div>{{ end }}
+    <ul class="roles">
+      {{ range .roles }}<li><strong>{{ .name }}</strong><p>{{ .text }}</p></li>{{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  <section id="contact" class="section" style="padding-top:0">
+    <div class="sec-head"><h2>Contact us</h2></div>
+    <div class="split">
+      <div>
+        <ul class="contact-list">
+          {{ with site.Params.email }}<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg><div><a href="mailto:{{ . }}">{{ . }}</a><span>Families, students and general questions</span></div></li>{{ end }}
+          {{ with site.Params.sponsorEmail }}<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3 22 20H2z"/></svg><div><a href="mailto:{{ . }}">{{ . }}</a><span>Sponsorship and partnerships. <a href="{{ "sponsor-us/" | relURL }}">How sponsorship works</a></span></div></li>{{ end }}
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div>{{ site.Params.city }}<span>{{ .Params.location_note | default "We meet in volunteer host homes, so we don't publish an address. Registered families get the details." }}</span></div></li>
+        </ul>
+        <h3 style="margin-top:2.5rem">Follow along</h3>
+        {{ partial "social.html" . }}
+      </div>
+      <div>
+        <h3>Send us a message</h3>
+        {{ partial "contact-form.html" (dict "kind" "general") }}
+      </div>
+    </div>
+  </section>
+</div>
+{{ partial "cta-band.html" . }}
+{{ end }}

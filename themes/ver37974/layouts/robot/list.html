@@ -1,0 +1,25 @@
+{{ define "main" }}
+{{ partial "page-head.html" (dict "page" .) }}
+<div class="wrap section" style="padding-top:0">
+  {{ with .Content }}<div class="prose" style="margin-bottom:3rem">{{ . }}</div>{{ end }}
+  {{ $cur := partial "current-season.html" . }}
+  {{ with $cur }}{{ partial "season-summary.html" . }}{{ end }}
+
+  {{ $others := slice }}{{ range .Pages.ByDate.Reverse }}{{ if ne . $cur }}{{ $others = $others | append . }}{{ end }}{{ end }}
+  {{ with $others }}
+  <section style="margin-top:var(--section)">
+    <div class="sec-head"><h2>Past seasons</h2></div>
+    <ul class="season-list">
+      {{ range . }}
+      <li><a href="{{ .RelPermalink }}">
+        <strong>{{ .Params.season }}</strong>
+        <span>{{ .Params.robot_name | default .Title }}{{ with .Params.game }} <span class="muted">for {{ . }}</span>{{ end }}</span>
+        <span class="muted">{{ len (.Params.versions | default slice) }} versions</span>
+      </a></li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+</div>
+{{ partial "cta-band.html" . }}
+{{ end }}

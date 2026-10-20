@@ -1,0 +1,191 @@
+# Site settings for FTC team 37974.
+# Most of what you'll want to change lives under [params] below.
+
+baseURL = "https://example.org/"   # change to your real address, e.g. https://37974robotics.ca/
+languageCode = "en-ca"
+title = "37974 Robotics"
+theme = "ver37974"
+enableRobotsTXT = true
+summaryLength = 30
+
+# Members and sponsors are shown on their list pages only, with no page each.
+[[cascade]]
+  [cascade.build]
+    render = "never"
+    list = "always"
+  [cascade.target]
+    kind = "page"
+    path = "{/members/**,/sponsors/**}"
+
+[taxonomies]
+  tag = "tags"
+
+[pagination]
+  pagerSize = 9
+
+[markup.goldmark.renderer]
+  unsafe = true   # lets the web editor's embeds and simple HTML through
+
+[markup.highlight]
+  style = "nord"
+
+[imaging]
+  quality = 82
+  resampleFilter = "Lanczos"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[params]
+  # Shown in the header, footer and page titles.
+  teamNumber = "37974"
+  teamName = "37974 Robotics"
+  legalName = "37974 Robotics Club"
+  city = "Edmonton, Alberta"
+  description = "FIRST Tech Challenge team 37974: a student-run youth robotics club in Edmonton, Alberta."
+
+  # Contact. Leave a value empty ("") to hide it.
+  email = "team@example.org"
+  sponsorEmail = "sponsors@example.org"
+
+  # Contact forms. A static site can't receive form posts by itself, so forms
+  # are sent through a form service. Paste a Formspree (or similar) endpoint
+  # here, e.g. "https://formspree.io/f/abcdwxyz". If it's empty, the form is
+  # replaced with an email link.
+  formAction = ""
+
+  # The Club is a not-for-profit corporation. Set to true only if it becomes a
+  # registered charity with the CRA; this changes the tax wording on the
+  # sponsorship page.
+  registeredCharity = false
+
+  # Where the current season's engineering portfolio PDF lives (optional).
+  portfolioPDF = ""
+
+  [params.social]
+    instagram = "https://www.instagram.com/"
+    youtube = "https://www.youtube.com/"
+    tiktok = ""
+    facebook = ""
+    linkedin = ""
+    github = "https://github.com/"
+    ftcScout = "https://ftcscout.org/teams/37974"
+
+# ---------------------------------------------------------------------------
+# Navigation. Items with a "parent" appear in that item's drop-down.
+# ---------------------------------------------------------------------------
+[menus]
+  [[menus.main]]
+    identifier = "team"
+    name = "Team"
+    url = "/about/"
+    weight = 10
+  [[menus.main]]
+    parent = "team"
+    name = "About us"
+    url = "/about/"
+    weight = 1
+  [[menus.main]]
+    parent = "team"
+    name = "Members"
+    url = "/members/"
+    weight = 2
+  [[menus.main]]
+    parent = "team"
+    name = "Contact"
+    url = "/about/#contact"
+    weight = 3
+
+  [[menus.main]]
+    identifier = "work"
+    name = "Our work"
+    url = "/robot/"
+    weight = 20
+  [[menus.main]]
+    parent = "work"
+    name = "Robot"
+    url = "/robot/"
+    weight = 1
+  [[menus.main]]
+    parent = "work"
+    name = "Engineering portfolio"
+    url = "/portfolio/"
+    weight = 2
+  [[menus.main]]
+    parent = "work"
+    name = "Outreach"
+    url = "/outreach/"
+    weight = 3
+
+  [[menus.main]]
+    name = "Events"
+    url = "/events/"
+    weight = 30
+  [[menus.main]]
+    name = "Gallery"
+    url = "/gallery/"
+    weight = 40
+
+  [[menus.main]]
+    identifier = "news"
+    name = "News"
+    url = "/announcements/"
+    weight = 50
+  [[menus.main]]
+    parent = "news"
+    name = "Announcements"
+    url = "/announcements/"
+    weight = 1
+  [[menus.main]]
+    parent = "news"
+    name = "Blog"
+    url = "/blog/"
+    weight = 2
+
+  [[menus.main]]
+    identifier = "sponsors"
+    name = "Sponsors"
+    url = "/sponsors/"
+    weight = 60
+  [[menus.main]]
+    parent = "sponsors"
+    name = "Our sponsors"
+    url = "/sponsors/"
+    weight = 1
+  [[menus.main]]
+    parent = "sponsors"
+    name = "Become a sponsor"
+    url = "/sponsor-us/"
+    weight = 2
+
+  # The gold button at the end of the header.
+  [[menus.cta]]
+    name = "Sponsor us"
+    url = "/sponsor-us/"
+    weight = 1
+
+  [[menus.footer]]
+    name = "Announcements"
+    url = "/announcements/"
+    weight = 1
+  [[menus.footer]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 2
+  [[menus.footer]]
+    name = "Events"
+    url = "/events/"
+    weight = 3
+  [[menus.footer]]
+    name = "Engineering portfolio"
+    url = "/portfolio/"
+    weight = 4
+  [[menus.footer]]
+    name = "Become a sponsor"
+    url = "/sponsor-us/"
+    weight = 5
+  [[menus.footer]]
+    name = "Site editor"
+    url = "/admin/"
+    weight = 9

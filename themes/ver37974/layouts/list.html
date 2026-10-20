@@ -1,0 +1,11 @@
+{{ define "main" }}
+{{ partial "page-head.html" (dict "page" .) }}
+<div class="wrap section" style="padding-top:0">
+  {{ with .Content }}<div class="prose" style="margin-bottom:3rem">{{ . }}</div>{{ end }}
+  {{ $paginator := .Paginate .Pages }}
+  <div class="post-grid">
+    {{ range $paginator.Pages }}{{ partial "post-card.html" . }}{{ end }}
+  </div>
+  {{ partial "pager.html" $paginator }}
+</div>
+{{ end }}

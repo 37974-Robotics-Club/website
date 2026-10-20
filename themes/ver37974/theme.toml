@@ -1,0 +1,9 @@
+name = "ver37974"
+license = "MIT"
+description = "Navy, gold and white theme for FIRST Tech Challenge team 37974: robot version history, engineering portfolio, sponsors, gallery and events."
+min_version = "0.146.0"
+tags = ["robotics", "first", "ftc", "team", "nonprofit"]
+features = ["engineering portfolio", "robot version log", "sponsor tiers", "photo gallery", "events", "web editor"]
+
+[author]
+  name = "37974 Robotics Club"

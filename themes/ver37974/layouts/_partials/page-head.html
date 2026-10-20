@@ -1,0 +1,9 @@
+{{/* dict "page" . "title" "" "lead" "" "meta" "" "crumb" (dict "url" "" "name" "") */}}
+<header class="page-head">
+  <div class="wrap">
+    {{ with .crumb }}<a class="crumb" href="{{ .url }}">Back to {{ .name }}</a>{{ end }}
+    {{ with .meta }}<p class="page-head__meta">{{ . | safeHTML }}</p>{{ end }}
+    <h1>{{ .title | default .page.Title }}</h1>
+    {{ with (.lead | default .page.Params.lead) }}<p class="lead">{{ . | markdownify }}</p>{{ end }}
+  </div>
+</header>

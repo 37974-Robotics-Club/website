@@ -1,0 +1,16 @@
+{{ define "main" }}
+{{ $meta := partial "date.html" .Date }}{{ with .Params.location }}{{ $meta = printf "%s, %s" $meta . }}{{ end }}
+{{ partial "page-head.html" (dict "page" . "meta" $meta "crumb" (dict "url" ("outreach/" | relURL) "name" "outreach") "lead" .Params.summary) }}
+<article class="prose-wrap section" style="padding-top:0">
+  {{ with .Params.cover }}<figure class="cover">{{ partial "img.html" (dict "page" $ "src" . "width" 1200 "alt" ($.Params.cover_alt | default "") "eager" true) }}</figure>{{ end }}
+  {{ if or .Params.hours .Params.people_reached .Params.partners }}
+  <dl class="specs" style="margin-bottom:2.5rem">
+    {{ with .Params.hours }}<dt>Volunteer hours</dt><dd>{{ . }}</dd>{{ end }}
+    {{ with .Params.people_reached }}<dt>People reached</dt><dd>{{ . }}</dd>{{ end }}
+    {{ with .Params.partners }}<dt>Partners</dt><dd>{{ delimit . ", " }}</dd>{{ end }}
+  </dl>
+  {{ end }}
+  <div class="prose">{{ .Content }}</div>
+  {{ partial "post-nav.html" . }}
+</article>
+{{ end }}
