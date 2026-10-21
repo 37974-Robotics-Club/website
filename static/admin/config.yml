@@ -4,7 +4,7 @@
 
 backend:
   name: github
-  repo: YOUR-GITHUB-ACCOUNT/YOUR-REPO   # change this
+  repo: 37974-Robotics-Club/website   # change this
   branch: main
   # To let people sign in with a "Sign in with GitHub" button, deploy the
   # free sveltia-cms-auth worker and put its URL here. Without it, editors can
