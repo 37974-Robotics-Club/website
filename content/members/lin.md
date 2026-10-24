@@ -1,13 +1,13 @@
 ---
-title: Peter Parker
+title: Matthew
 type: student
-role: Friendly neighborhood spider man
+role: CAD Lead and Outreach
 subteams:
+  - CAD
   - Outreach
-  - Business
-grade: 11
-joined: '2026'
-bio: Sample member.
+grade: 10
+joined: '2023'
+bio: ''
 photo: ''
 photo_consent: false
 weight: 50
