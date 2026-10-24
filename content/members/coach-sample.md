@@ -1,11 +1,11 @@
 ---
-title: miiko
+title: larry steven jr the giraffe
 type: mentor
 role: Head coach
 subteams: []
 grade: null
-joined: ''
-bio: Sample mentor. Adults may use their full name. Official FIRST volunteer, screened.
+joined: '2028'
+bio: hes a giraffe and his head is falling off ;(
 photo: ''
 photo_consent: false
 weight: 100
