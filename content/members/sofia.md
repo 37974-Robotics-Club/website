@@ -1,11 +1,14 @@
 ---
-title: Sofia
-role: Portfolio editor
-subteams: [Outreach, CAD]
-grade: 9
-joined: "2026"
-photo: ""
+title: Izak
+type: student
+role: Mechanical and Code
+subteams:
+  - Build
+  - Programming
+grade: 10
+joined: '2026'
+bio: ''
+photo: ''
 photo_consent: false
-bio: Sample member.
 weight: 70
 ---
