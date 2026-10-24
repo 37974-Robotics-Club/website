@@ -13,18 +13,10 @@ facts:
   - label: Organization
     value: Federal not-for-profit corporation
 values:
-  - title: Iterate on everything
-    text: Our logo says "Ver." for a reason. No first draft is final, whether it's an intake, a line of code or a sponsor email.
-  - title: Gracious Professionalism
-    text: We compete hard and help other teams anyway. We lend parts, share code and cheer for alliance partners.
-  - title: Everyone builds
-    text: New members pick up a tool in their first week. Nobody spends a season only watching.
-  - title: Safety first
-    text: Safety glasses on, batteries stored properly, and two screened adults supervising every session.
-  - title: Write it down
-    text: If it isn't in the engineering journal, it didn't happen. Good notes help next year's team as much as this year's.
-  - title: Share what we learn
-    text: Outreach is part of the job. We bring the robot to the community and teach what we know.
+  - title: Values
+    text: Growth and progress is the emphasis within our team, striving for discovery through experimentation. Mistakes and errors do not hinder the progress of the team; rather, they allow us to grow in ways we couldn’t have imagined, acquiring new perspectives and ideas regarding certain aspects. This allows for innovation in our future endeavours, and for students to develop their passion in a team that encourages curiosity, collaboration and creativity, among many others.
+  - title: Our Mission
+    text: Our team aims to promote innovation and discovery within robotics, and beyond that, the STEM community. The goal is to empower students through meaningful STEM education that will guide them in future endeavours, while also encouraging others, in particular the youth community, to explore the possibilities of STEM.
 structure:
   title: Structure and Roles
   text: |-
@@ -37,7 +29,7 @@ structure:
     - name: Programming
       text: Owns the robot code on GitHub, autonomous routines and code reviews.
     - name: CAD
-      text: Digital model of the robot created using computer-aided design software. Our team uses Onshape to verify designs and ideas digitally before handing it off to the mechanical team.
+      text: The CAD team deals with the digital model of the robot created using computer-aided design software. Our team uses Onshape to verify designs and ideas digitally before handing it off to the mechanical team.
     - name: Outreach
       text: The outreach team focuses on recording the engineering process and progress of the robot through the engineering portfolio, as well as managing all socials. Communication with the community is a major part of this role, including the promotion of FIRST values and attitudes.
     - name: Drive team
