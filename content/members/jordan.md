@@ -1,13 +1,13 @@
 ---
-title: Mikko
+title: Christopher
 type: student
-role: programmer and builder
+role: CAD and Code
 subteams:
   - Programming
-  - Build
-grade: 8
+  - CAD
+grade: 12
 joined: '2025'
-bio: sadly going to be 6 foot one day
+bio: ''
 photo: ''
 photo_consent: false
 weight: 20
