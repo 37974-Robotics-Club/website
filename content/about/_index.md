@@ -28,22 +28,20 @@ values:
 structure:
   title: Structure and Roles
   text: |-
-    Our team has a specific structure consisting of several roles: mechanical, CAD, programming and outreach. Each student belongs to one primary team and one subteam, where they are given the chance to explore their interests through different opportunities. 
+    Our team has a specific structure consisting of several roles: mechanical, CAD, programming, outreach and the drive team. Each student belongs to one primary team and one subteam, where they are given the chance to explore their interests through different opportunities. 
 
     Adult coaches and mentors teach, supervise and keep everyone safe.
   roles:
-    - name: Team captain
-      text: Runs meetings, keeps the season plan on track and speaks for the team at events.
-    - name: Build lead
-      text: Owns the robot's mechanical design and build schedule, and decides when a part is ready for testing.
-    - name: Programming lead
+    - name: Mechanical
+      text: Upon analysis of the game manual, mechanical develops a plan for the design of the robot, and throughout the season, builds the robot according to game guidelines. During competitions, they act as the pit team, helping to maintain the robot between matches and part malfunctions. A great majority of construction is done by mechanical, as well as location of materials, so that the CADed robot may come into place.
+    - name: Programming
       text: Owns the robot code on GitHub, autonomous routines and code reviews.
-    - name: CAD lead
-      text: Keeps the robot model up to date in Onshape so parts fit before we cut them.
+    - name: CAD
+      text: Digital model of the robot created using computer-aided design software. Our team uses Onshape to verify designs and ideas digitally before handing it off to the mechanical team.
+    - name: Outreach
+      text: The outreach team focuses on recording the engineering process and progress of the robot through the engineering portfolio, as well as managing all socials. Communication with the community is a major part of this role, including the promotion of FIRST values and attitudes.
     - name: Drive team
-      text: Driver, operator and drive coach. Practise together and run the robot in matches.
-    - name: Outreach and business lead
-      text: Plans community events, writes to sponsors and tracks the budget with a mentor.
+      text: This consists of the drivers, human player and drive coach. Before competitions, they practice together to ensure a smooth run during the matches.
     - name: Portfolio editor
       text: Collects journal entries from every subteam and assembles the engineering portfolio for judges.
     - name: Coaches and mentors
