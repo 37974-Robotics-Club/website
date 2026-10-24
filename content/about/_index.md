@@ -1,9 +1,9 @@
 ---
-title: About us
-lead: A student-run FIRST Tech Challenge team for ages 12 to 18, founded in Edmonton in 2026.
+title: About Us
+lead: A student-run FIRST Tech Challenge team for ages 12 to 18, founded in Edmonton, Alberta in 2026.
 facts:
   - label: Founded
-    value: "2026"
+    value: '2026'
   - label: Program
     value: FIRST Tech Challenge
   - label: Ages
@@ -26,9 +26,11 @@ values:
   - title: Share what we learn
     text: Outreach is part of the job. We bring the robot to the community and teach what we know.
 structure:
-  title: How the team works
-  text: |
-    Students run the team. Each student belongs to at least one subteam and can lead one after a season of experience. Adult coaches and mentors teach, supervise and keep everyone safe. A volunteer board of directors handles the Club's money, insurance and agreements, and does not make design decisions.
+  title: Structure and Roles
+  text: |-
+    Our team has a specific structure consisting of several roles: mechanical, CAD, programming and outreach. Each student belongs to one primary team and one subteam, where they are given the chance to explore their interests through different opportunities. 
+
+    Adult coaches and mentors teach, supervise and keep everyone safe.
   roles:
     - name: Team captain
       text: Runs meetings, keeps the season plan on track and speaks for the team at events.
