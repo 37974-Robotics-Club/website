@@ -1,12 +1,13 @@
 ---
-title: john cena
+title: Yusuf
 type: student
-role: Build team
+role: Code Lead and Mechanical
 subteams:
+  - Programming
   - Build
-grade: 5
-joined: '2026'
-bio: Sample member. Newest member of the team.
+grade: 10
+joined: '2023'
+bio: ''
 photo: ''
 photo_consent: false
 weight: 80
