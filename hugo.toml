@@ -1,7 +1,7 @@
 # Site settings for FTC team 37974.
 # Most of what you'll want to change lives under [params] below.
 
-baseURL = "https://example.org/"   # change to your real address, e.g. https://37974robotics.ca/
+baseURL = "https://www.ftc37974.ca/"   # change to your real address, e.g. https://37974robotics.ca/
 languageCode = "en-ca"
 title = "37974 Robotics"
 theme = "ver37974"
