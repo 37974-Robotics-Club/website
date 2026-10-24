@@ -1,10 +1,10 @@
 ---
 title: Home
-description: FIRST Tech Challenge team 37974, a student-run youth robotics club in Edmonton, Alberta.
+description: FIRST Tech Challenge team 37974 "Subject to Change", a student-run youth robotics club in Edmonton, Alberta.
 hero:
-  kicker: FIRST Tech Challenge team 37974, Edmonton
+  kicker: FIRST Tech Challenge Team 37974 Subject to Change, Edmonton
   title: Every robot is a new version.
-  text: We're a student-run youth robotics club. Each season we design, build, code and drive a competition robot, then take it apart and make it better.
+  text: We're a student-run youth robotics club participating in the FIRST Tech Challenge. Each season we design, build, code and drive a competition robot, then take it apart and make it better.
   buttons:
     - label: Meet the team
       url: /about/
