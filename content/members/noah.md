@@ -1,11 +1,14 @@
 ---
-title: Noah
-role: Operator
-subteams: [Drive team, Programming]
-grade: 8
-joined: "2026"
-photo: ""
+title: Miles
+type: student
+role: Mechanical and Outreach
+subteams:
+  - Build
+  - Outreach
+grade: 10
+joined: '2023'
+bio: ''
+photo: ''
 photo_consent: false
-bio: Sample member.
 weight: 60
 ---
