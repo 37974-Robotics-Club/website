@@ -45,6 +45,6 @@ structure:
 location_note: We meet in volunteer host homes, so we don't publish an address. Registered families get the details.
 ---
 
-We're a group of Edmonton students who build, code and drive a robot for _FIRST_ Tech Challenge. In September 2026 our families incorporated 37974 Robotics Club as a not-for-profit so the team could raise money, hold insurance and keep its own equipment.
+Founded in 2026, "Subject to Change" is a parent-led team consisting of students from Edmonton, Alberta who build, code and drive a robot for _FIRST_ Tech Challenge. Through our participation in the First Tech Challenge, we work towards inspiring youth to a future in STEM and providing a multitude of opportunities to explore their passions. Each of our members have a specified role given that suits their strengths and interests, with chances to learn and grow in other areas. 
 
-FTC teams design, build and program a robot to play a new game each season, competing in alliances against other teams from across the province. Judges also award teams for their engineering process, outreach and teamwork, so our journal and community work matter as much as the robot.
+FTC teams design, build and program a robot to play a new game each season, competing in alliances against other teams from all around. Judges also award teams for their engineering process, outreach and teamwork, so our outreach and community work is just as valued.
