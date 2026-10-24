@@ -27,7 +27,7 @@ structure:
     - name: Mechanical
       text: Upon analysis of the game manual, mechanical develops a plan for the design of the robot, and throughout the season, builds the robot according to game guidelines. During competitions, they act as the pit team, helping to maintain the robot between matches and part malfunctions. A great majority of construction is done by mechanical, as well as location of materials, so that the CADed robot may come into place.
     - name: Programming
-      text: Owns the robot code on GitHub, autonomous routines and code reviews.
+      text: The programming team brings the robot to life; they develop the code that allows the robot to perform during matches. This includes motors, servos, sensors, cameras, and more. They test and improve code throughout the season to improve robot performance.
     - name: CAD
       text: The CAD team deals with the digital model of the robot created using computer-aided design software. Our team uses Onshape to verify designs and ideas digitally before handing it off to the mechanical team.
     - name: Outreach
