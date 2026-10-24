@@ -1,13 +1,13 @@
 ---
-title: Batman
+title: Presten
 type: student
-role: Driver
+role: CAD and Outreach
 subteams:
-  - Drive team
-  - Build
-grade: 9
-joined: '2026'
-bio: Sample member.
+  - CAD
+  - Outreach
+grade: 11
+joined: '2025'
+bio: ''
 photo: ''
 photo_consent: false
 weight: 40
