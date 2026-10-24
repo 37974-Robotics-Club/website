@@ -1,7 +1,7 @@
 ---
 title: Juwairiya
 type: student
-role: Mechanical and Outreach
+role: Mechanical Lead and Outreach
 subteams:
   - Build
   - Drive team
