@@ -4,7 +4,7 @@ description: FIRST Tech Challenge team 37974 "Subject to Change", a student-run 
 hero:
   kicker: FIRST Tech Challenge Team 37974 Subject to Change, Edmonton
   title: Every robot is a new version.
-  text: We're a student-run youth robotics club participating in the FIRST Tech Challenge. Each season we design, build, code and drive a competition robot, then take it apart and make it better.
+  text: We're a student-run youth robotics club participating in the FIRST Tech Challenge. Each season we design, build, code and drive a competition robot, striving for innovation and exploring opportunities to grow our skills.
   buttons:
     - label: Meet the team
       url: /about/
@@ -16,11 +16,11 @@ pillars:
     url: /robot/
     link_label: See the robot
   - title: Document
-    text: Every decision goes in our engineering journal, including what we tried, what failed, and what we changed.
+    text: Our entire engineering process and every decision is included in our engineering journal, documenting our progress and every change made. Beyond that, the design of each component is explained, and other opportunities explored outside of general robotics.
     url: /portfolio/
     link_label: Read the journal
   - title: Share
-    text: We take the robot to schools, libraries and community events so more kids get to try engineering.
+    text: Outreach events to come.
     url: /outreach/
     link_label: See our outreach
 ---
