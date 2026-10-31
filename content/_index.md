@@ -4,7 +4,7 @@ description: FIRST Tech Challenge team 37974 "Subject to Change", a student-run 
 hero:
   kicker: FIRST Tech Challenge Team 37974 Subject to Change, Edmonton
   title: Every robot is a new version.
-  text: We're a student-run youth robotics club participating in the FIRST Tech Challenge. Each season we design, build, code and drive a competition robot, then take it apart and make it better.
+  text: We're a student-run youth robotics club participating in the FIRST Tech Challenge. Each season we design, build, code and drive a competition robot, striving for innovation and exploring opportunities to grow our skills.
   buttons:
     - label: Meet the team
       url: /about/
