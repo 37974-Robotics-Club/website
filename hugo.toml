@@ -46,7 +46,7 @@ summaryLength = 30
   description = "FIRST Tech Challenge team 37974: a student-run youth robotics club in Edmonton, Alberta."
 
   # Contact. Leave a value empty ("") to hide it.
-  email = "team@example.org"
+  email = "info@ftc37974.ca"
   sponsorEmail = "sponsors@example.org"
 
   # Contact forms. A static site can't receive form posts by itself, so forms
@@ -64,12 +64,10 @@ summaryLength = 30
   portfolioPDF = ""
 
   [params.social]
-    instagram = "https://www.instagram.com/"
+    instagram = "https://www.instagram.com/ftc37974/"
     youtube = "https://www.youtube.com/"
     tiktok = ""
-    facebook = ""
-    linkedin = ""
-    github = "https://github.com/"
+    github = "https://github.com/37974-Robotics-Club"
     ftcScout = "https://ftcscout.org/teams/37974"
 
 # ---------------------------------------------------------------------------
