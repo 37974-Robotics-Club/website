@@ -162,7 +162,7 @@ summaryLength = 30
     name = "Sponsor us"
     url = "/sponsor-us/"
     weight = 1
-
+# 🤬
   [[menus.footer]]
     name = "Announcements"
     url = "/announcements/"
