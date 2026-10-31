@@ -16,11 +16,11 @@ pillars:
     url: /robot/
     link_label: See the robot
   - title: Document
-    text: Every decision goes in our engineering journal, including what we tried, what failed, and what we changed.
+    text: Our entire engineering process and every decision is included in our engineering journal, documenting our progress and every change made. Beyond that, the design of each component is explained, and other opportunities explored outside of general robotics.
     url: /portfolio/
     link_label: Read the journal
   - title: Share
-    text: We take the robot to schools, libraries and community events so more kids get to try engineering.
+    text: Outreach events to come.
     url: /outreach/
     link_label: See our outreach
 ---
