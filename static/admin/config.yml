@@ -165,10 +165,10 @@ collections:
     fields:
       - { name: title, label: Title, widget: string }
       - { name: date, label: Date, widget: datetime, time_format: false }
-      - { name: season, label: Season, widget: string, default: "2026–27" }
+      - { name: season, label: Season, widget: string, default: "2026-27" }
       - name: subsystem
         label: Subsystem
-        widget: select
+        widget: list
         options: [Strategy, Drivetrain, Intake, Outtake, Arm, Programming, Autonomous, CAD, Electrical, Outreach, Business]
       - { name: authors, label: Authors (first names), widget: list }
       - { name: summary, label: Summary, widget: text }
