@@ -19,7 +19,7 @@ budget_club_startup:
     amount: 6000
 
 budget_robot_startup:
-  - item: Robot parts and electronics (per robot)
+  - item: Robot parts and electronics
     note: Motors, servos, control hub, expansion hub, limelight, sensors, structural material, wheels, odometry
     amount: 6000
   - item: Safety gear, tool boxes, storage
@@ -33,13 +33,14 @@ budget_robot_annual:
     amount: 3000
   - item: Robot parts, electronics, and consumables
     note: Replacement parts, batteries, 3D Printer filament, and raw materials
-    amount: 2000
+    amount: 1000
   - item: Field elements
     note: This season's game pieces
     amount: 1000
-  - item: KDays Registration
+  - item: Premiere Event Registration
+    note: Canadian Rockies International Premiere Event @ Kdays
     amount: 2500
-  - item: Outreach materials and team jerseys and shirts
+  - item: Outreach materials, team jerseys and shirts
     amount: 1000
 
 in_kind_intro: In-kind gifts count at their fair value toward a sponsorship. You still get a receipt and logo placement on the website, jerseys, and shoutouts on social media.
