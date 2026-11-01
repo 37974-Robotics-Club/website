@@ -2,7 +2,9 @@
 title: Initial Design Process
 date: 2026-09-18
 season: 2026–27
-subsystem: CAD
+subsystem:
+  - CAD
+  - Marketing
 authors:
   - Anna
 summary: The first meeting focused on basic robot design and team branding, looking to the upcoming season.
