@@ -40,7 +40,7 @@
       {{ end }}
       {{ with $d.budget_robot_startup }}
       <div class="table-scroll">
-        <h3>Robot Team Startup Costs</h3>
+        <h3>Per Team Startup Costs</h3>
         {{ $total := 0 }}{{ range . }}{{ $total = add $total .amount }}{{ end }}
         <table class="budget">
           <thead><tr><th>Item</th><th>Startup Amount</th></tr></thead>
@@ -55,7 +55,7 @@
       {{ end }}
       {{ with $d.budget_robot_annual }}
       <div class="table-scroll">
-        <h3>Robot Team Annual Costs</h3>
+        <h3>Per Team Season Costs</h3>
         {{ $total := 0 }}{{ range . }}{{ $total = add $total .amount }}{{ end }}
         <table class="budget">
           <thead><tr><th>Item</th><th>Per season</th></tr></thead>

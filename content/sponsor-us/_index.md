@@ -1,6 +1,6 @@
 ---
 title: Become a sponsor
-lead: Your support buys the parts, tools, field and competition fees that let students build a robot from scratch.
+lead: They build the machine. The journey builds the team. Your support covers the parts, tools, and tournament fees that let our students design and build a robot from scratch. But while our team builds the machine, the experience builds the mind—fostering tomorrow’s leaders, engineers, and problem-solvers.
 reasons:
   - title: Build your future workforce
     text: Our students learn CAD, programming, electronics and project management, the same skills your engineers use every day.
