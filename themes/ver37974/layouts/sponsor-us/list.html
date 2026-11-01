@@ -71,6 +71,15 @@
     </div>
   </section>
 
+  <section style="margin-bottom:var(--section)">
+  {{ with $d.in_kind }}
+    <div class="split" style="margin-top:3rem">
+      <div><h3>Not a cash sponsor?</h3><p class="muted">{{ $d.in_kind_intro | default "In-kind gifts count at their fair value toward a sponsorship level." }}</p></div>
+      <ul class="tri-list">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+    </div>
+    {{ end }}
+  </section>
+
   {{/* How it works: a real sequence, so it's numbered */}}
   {{ with $d.steps }}
   <section style="margin-bottom:var(--section)">
