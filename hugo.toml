@@ -3,7 +3,7 @@
 
 baseURL = "https://www.ftc37974.ca/"   # change to your real address, e.g. https://37974robotics.ca/
 languageCode = "en-ca"
-title = "37974 Robotics"
+title = "37974 Robotics Club"
 theme = "ver37974"
 enableRobotsTXT = true
 summaryLength = 30
@@ -47,7 +47,7 @@ summaryLength = 30
 
   # Contact. Leave a value empty ("") to hide it.
   email = "info@ftc37974.ca"
-  sponsorEmail = "sponsors@example.org"
+  sponsorEmail = "sponsor@ftc37974.ca"
 
   # Contact forms. A static site can't receive form posts by itself, so forms
   # are sent through a form service. Paste a Formspree (or similar) endpoint
