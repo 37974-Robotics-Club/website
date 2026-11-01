@@ -58,7 +58,7 @@
         <h3>Per Team Season Costs</h3>
         {{ $total := 0 }}{{ range . }}{{ $total = add $total .amount }}{{ end }}
         <table class="budget">
-          <thead><tr><th>Item</th><th>Per season</th></tr></thead>
+          <thead><tr><th>Item</th><th>Per Season</th></tr></thead>
           <tbody>
             {{ range . }}
             <tr><td>{{ .item }}{{ with .note }}<small>{{ . }}</small>{{ end }}<div class="bar" aria-hidden="true"><span style="width: {{ math.Round (mul (div (float .amount) $total) 100) }}%"></span></div></td><td>${{ lang.FormatNumber 0 .amount }}</td></tr>
