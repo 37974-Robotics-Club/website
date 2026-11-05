@@ -162,7 +162,6 @@ summaryLength = 30
     name = "Sponsor us"
     url = "/sponsor-us/"
     weight = 1
-# 🤬
   [[menus.footer]]
     name = "Announcements"
     url = "/announcements/"
@@ -183,7 +182,7 @@ summaryLength = 30
     name = "Become a sponsor"
     url = "/sponsor-us/"
     weight = 5
-  [[menus.footer]]
-    name = "Site editor"
-    url = "/admin/"
-    weight = 9
+  # [[menus.footer]]
+  #   name = "Site editor"
+  #   url = "/admin/"
+  #   weight = 9
