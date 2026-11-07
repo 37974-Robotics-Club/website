@@ -224,7 +224,7 @@ Everything else on the home page (next event, latest announcement, current robot
 | `photo_consent` | **The photo only shows when this is `true`** |
 | `weight` | Sort order |
 
-The section's `_index.md` has `subteam_order` (the order of the filter buttons) and `join` (the "Want to join?" box).
+
 
 ### Robot seasons (`content/robot/*.md`)
 
