@@ -1,5 +1,5 @@
 ---
-title: Initial Design Process
+title: September 18, 2026
 date: 2026-09-18
 season: 2026–27
 subsystem:
