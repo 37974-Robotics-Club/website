@@ -5,6 +5,7 @@ season: 2026-27
 subsystem:
   - CAD
   - Mechanical
+  - Code
 authors:
   - Anna
 summary: More work was done in CAD, as well as setting up for the coders.
