@@ -21,3 +21,7 @@ The goal was to work on various prototypes regarding the intake and work more on
 A fair amount of CAD was finished this meeting, such as the shooter base and the turret base. Further work on a prototype intake to test uptake and a gearing system for said intake was done with the help of the mechanical team. Other members worked on the number plates to 3D print. 
 
 The outreach team brainstormed ideas for the logo and started the process of designing it, gathering input from all of the members.
+
+## Decisions
+
+The general concept for the logo was decided upon.
