@@ -20,6 +20,10 @@ Further work on CADing the robot was the priority of the meeting, as well as tes
 
 Today, we welcomed two new members to the team, and introduced them to the basics of Onshape and how the CAD is organised on our team. The current CAD and robot plan was revisited and further work on the intake gearing system and shooter was done. As the shooter was improved on, it was tested with multiple nectar and pollen. The coders helped to install a bunch of libraries, while Pedro tuning for the test rig.  
 
+## Decisions 
+
+Roles for each member were established following the addition of new members. 
+
 ## Results
 
-Further adjustments were needed to be made to the shooter to ensure accuracy and an appropriate amount of power. Roles for each member were established following the addition of new members.
+Further adjustments were needed to be made to the shooter to ensure accuracy and an appropriate amount of power.
