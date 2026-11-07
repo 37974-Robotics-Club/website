@@ -1,5 +1,5 @@
 ---
-title: Annathebanna
+title: Anna
 type: student
 role: Outreach Lead and CAD
 subteams:
