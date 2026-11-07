@@ -19,6 +19,10 @@ The goal this meeting was to continue our work on the assembly of the robot, wit
 
 The coding team worked on both the shooter and shooter hood code. Having moved meeting locations, part of the team worked on rebuilding the field structure to have it up and running in preparation for future testing of the robot. Work on website content was continued, and 
 
+## Results
+
+During the assembly of the robot, we did run into a couple of sizing problems with the CADed parts, preventing us from building that part of the robot during this meeting. 
+
 ## Next steps
 
-The plans for the next meeting were to continue our work on the website, getting a good majority of our content on there, as well as prioritising the assembly of the robot.
+The plans for the next meeting were to continue our work on the website, getting a good majority of our content on there, as well as prioritising the assembly of the robot. The CAD team would also fix the measurements on the parts that needed adjusting.
