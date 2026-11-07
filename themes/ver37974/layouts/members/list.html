@@ -31,14 +31,5 @@
   </section>
   {{ end }}
 
-  {{ with .Params.join }}
-  <section class="group">
-    <div class="now__panel" style="max-width:44rem">
-      <h3>{{ .title }}</h3>
-      <p class="muted">{{ .text }}</p>
-      <a class="btn btn--primary" href="{{ partial "link.html" .url }}">{{ .label }}</a>
-    </div>
-  </section>
-  {{ end }}
 </div>
 {{ end }}
