@@ -17,7 +17,7 @@ The goal this meeting was to continue our work on the assembly of the robot, wit
 
 ## What we tried
 
-The coding team worked on both the shooter and shooter hood code. Having moved meeting locations, part of the team worked on rebuilding the field structure to have it up and running in preparation for future testing of the robot. Work on website content was continued, and 
+The coding team worked on both the shooter and shooter hood code. Having moved meeting locations, part of the team worked on rebuilding the field structure to have it up and running in preparation for future testing of the robot. Work on website content was continued and once again, so was assembly of the robot. 
 
 ## Results
 
