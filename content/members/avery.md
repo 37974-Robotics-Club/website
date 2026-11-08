@@ -4,7 +4,6 @@ type: student
 role: Mechanical Lead and Outreach
 subteams:
   - Build
-  - Drive team
   - Outreach
 grade: 12
 joined: '2023'
