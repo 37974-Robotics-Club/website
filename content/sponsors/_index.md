@@ -1,6 +1,6 @@
 ---
 title: Our sponsors
-lead: These organizations make our season possible. Thank you.
+lead: Thank you to all of the organisations who have made this season possible.
 ---
 
-Every motor, every tile on our practice field and every competition fee this season was paid for, in part, by the sponsors below. They're the reason students who've never held a soldering iron can build a competition robot. Thank you for believing in us. We hope you're proud of what you helped build.
+Our sponsors are the ones who have made our participation in this season possible, and for that, we give our sincere gratitude. Their contributions have funded essential supplies and allowed us to bring our robot to life. Thank you for believing in us and our mission, helping to inspire innovation for youth in STEM within the community and fuel the passion that drives it all forward.
