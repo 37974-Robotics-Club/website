@@ -7,7 +7,7 @@ subteams:
   - Outreach
 grade: 12
 joined: '2023'
-bio: Like ghosts in the sun, Like ghosts in the snow
+bio: ''
 photo: ''
 photo_consent: false
 weight: 10
