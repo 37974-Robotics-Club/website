@@ -81,7 +81,7 @@ summaryLength = 30
     weight = 10
   [[menus.main]]
     parent = "team"
-    name = "About us"
+    name = "we us"
     url = "/about/"
     weight = 1
   [[menus.main]]
