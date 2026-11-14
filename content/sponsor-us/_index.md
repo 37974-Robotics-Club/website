@@ -5,7 +5,7 @@ reasons:
   - title: Build your future workforce
     text: Our students learn CAD, programming, electronics and project management, the same skills your engineers use every day.
   - title: Be seen by families and industry
-    text: Your logo travels to competitions and community events across Alberta, and appears on our website and social channels.
+    text: Your logo travels to competitions and community events across Alberta, and appears on our website, social channels, and team uniform.
   - title: See exactly what you paid for
     text: Our engineering journal is public. You can watch each version of the robot your sponsorship helped build.
 contact_text: Tell us a little about your organization and we'll send our sponsorship package, or set up a visit to see the robot in person.

@@ -11,5 +11,9 @@ photos:
     caption: Team leads meeting and discussion
   - image: Screenshot 2026-10-30 18.40.30.png
     caption: Cutting plywood for robot frame and structure
+  - image: 20261101_121949.webp
+    caption: ''
+  - image: 20261101_113844.webp
+    caption: ''
 videos: []
 ---

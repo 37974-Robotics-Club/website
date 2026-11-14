@@ -4,11 +4,10 @@ type: student
 role: Mechanical Lead and Outreach
 subteams:
   - Build
-  - Drive team
   - Outreach
 grade: 12
 joined: '2023'
-bio: Like ghosts in the sun, Like ghosts in the snow
+bio: ''
 photo: ''
 photo_consent: false
 weight: 10

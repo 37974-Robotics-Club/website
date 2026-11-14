@@ -10,5 +10,5 @@ joined: '2023'
 bio: ''
 photo: ''
 photo_consent: false
-weight: 60
+weight: 49
 ---
