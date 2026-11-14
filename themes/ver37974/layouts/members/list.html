@@ -1,7 +1,6 @@
 {{ define "main" }}
 {{ partial "page-head.html" (dict "page" .) }}
 <div class="wrap section" style="padding-top:0">
-  {{ with .Content }}<div class="prose" style="margin-bottom:2.5rem">{{ . }}</div>{{ end }}
   {{ $students := where .Pages "Params.type" "ne" "mentor" }}
   {{ $mentors := where .Pages "Params.type" "mentor" }}
 
