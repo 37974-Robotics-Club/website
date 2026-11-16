@@ -19,5 +19,7 @@ photos:
     caption: ''
   - image: PXL_20261025_221037684.jpg
     caption: ''
+  - image: robot-build-closeup.png
+    caption: Working on the robot frame and drivetrain during build
 videos: []
 ---
