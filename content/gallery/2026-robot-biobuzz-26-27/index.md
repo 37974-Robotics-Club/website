@@ -11,6 +11,8 @@ photos:
     caption: Master Cad of our Robot
   - image: https://cdn.discordapp.com/attachments/1550737349103845488/1572428326822477856/image.png?ex=6afe557f&is=6afd03ff&hm=5a29c71e327b367819720d57d695a159116d7029dee14b4d2016e7f1b8afdd50
     caption: Intake assembly sketch
+  - image: pasted-image-1794969752386.png
+    caption: Intake Ramp Cad
   - image: https://cdn.discordapp.com/attachments/1550737349103845488/1572427085941837864/image.png?ex=6afe5457&is=6afd02d7&hm=f8f70ad9c45ad97a7180445f8cddb18971ef3b874801e61e94e28238f462b89d
     caption: Screenshot of the Master Cad from the top
   - image: image.png
