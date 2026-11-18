@@ -1,7 +1,7 @@
 ---
 title: Welcome to Team 37974 "Subject to Change"
 date: 2026-11-12
-author: Mikko
+author: Anna
 summary: We're a new parent-led FIRST Tech Challenge team in Edmonton, and this is where we'll post what we're building and any updates regarding our team.
 cover: /images/uploads/Full Colour.png
 cover_alt: ''
