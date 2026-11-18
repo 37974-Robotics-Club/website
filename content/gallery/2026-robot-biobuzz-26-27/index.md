@@ -2,7 +2,7 @@
 title: Robot - BIOBUZZ 26-27
 date: 2026-09-12
 event: Photos of current robot
-summary: ''
+summary: This is our teams 2026-2027 robot.  it is a Dual intake/shooter robot with a High-Performance Drivetrain.  We started this year by cading
 cover: Screenshot 2026-10-30 18.45.21.png
 photos:
   - image: Screenshot 2026-10-30 18.46.21.png
