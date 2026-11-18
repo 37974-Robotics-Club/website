@@ -7,6 +7,8 @@ cover: Screenshot 2026-10-30 18.45.21.png
 photos:
   - image: Screenshot 2026-10-30 18.46.21.png
     caption: CADed version of our first prototype
+  - image: https://cdn.discordapp.com/attachments/1550737349103845488/1572426347798732870/image.png?ex=6afe53a7&is=6afd0227&hm=badbf4c6f99b37265ffdd4dc4505962bf504563b30fd816f160d7366bcca1289
+    caption: ''
   - image: image.png
     caption: Robot Chassis
   - image: rn_image_picker_lib_temp_245dd88c-0cd8-40d8-873d-fdf2e9bc6a99.jpg
@@ -18,8 +20,6 @@ photos:
   - image: 20261025_112633.jpg
     caption: ''
   - image: PXL_20261025_221037684.jpg
-    caption: ''
-  - image: https://cdn.discordapp.com/attachments/1550737349103845488/1571727672122413186/20261115_212407.jpg?ex=6afc71b6&is=6afb2036&hm=0179793ab6ea1bdf7e186cdf4180d6f2c972ffb3c709c72624baa6f1f8e7f805
     caption: ''
 videos: []
 ---
