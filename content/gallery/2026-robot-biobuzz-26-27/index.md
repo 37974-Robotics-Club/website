@@ -9,6 +9,8 @@ photos:
     caption: CADed version of our first prototype
   - image: https://cdn.discordapp.com/attachments/1550737349103845488/1572426347798732870/image.png?ex=6afe53a7&is=6afd0227&hm=badbf4c6f99b37265ffdd4dc4505962bf504563b30fd816f160d7366bcca1289
     caption: ''
+  - image: https://cdn.discordapp.com/attachments/1550737349103845488/1572427085941837864/image.png?ex=6afe5457&is=6afd02d7&hm=f8f70ad9c45ad97a7180445f8cddb18971ef3b874801e61e94e28238f462b89d
+    caption: ''
   - image: image.png
     caption: Robot Chassis
   - image: rn_image_picker_lib_temp_245dd88c-0cd8-40d8-873d-fdf2e9bc6a99.jpg
