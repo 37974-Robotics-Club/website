@@ -15,5 +15,7 @@ photos:
     caption: ''
   - image: 20261101_113844.webp
     caption: ''
+  - image: https://cdn.discordapp.com/attachments/1550737349103845488/1571727819246145657/Robot_Spotlight_-_00000001.jpg?ex=6afc71d9&is=6afb2059&hm=8296b59e64a318d168b97d960985e439ebe59be2f882ade86690180afaa79ee5
+    caption: ''
 videos: []
 ---
