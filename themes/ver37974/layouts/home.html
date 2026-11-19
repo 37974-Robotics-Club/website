@@ -4,7 +4,7 @@
   <div class="wrap hero__grid">
     <div>
       {{ with $h.kicker }}<p class="hero__kicker">{{ . }}</p>{{ end }}
-      <h1>{{ $h.title | default site.Params.teamName }}</h1>
+      <h1><a class="hero__title-link" href="{{ "images/every-robot.png" | relURL }}">{{ $h.title | default site.Params.teamName }}</a></h1>
       {{ with $h.text }}<p class="lead">{{ . | markdownify }}</p>{{ end }}
       <div class="btn-row">
         {{ range $i, $b := $h.buttons }}
