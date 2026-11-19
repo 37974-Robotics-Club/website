@@ -1,11 +1,10 @@
 {{ define "main" }}
 {{ $h := .Params.hero }}
-{{ $title := $h.title | default site.Params.teamName }}
 <section class="hero">
   <div class="wrap hero__grid">
     <div>
       {{ with $h.kicker }}<p class="hero__kicker">{{ . }}</p>{{ end }}
-      <h1><a class="hero__title-link" href="{{ "images/every-robot.png" | relURL }}" aria-label="Open the troll-face image">{{ substr $title 0 1 }}</a>{{ substr $title 1 }}</h1>
+      <h1>{{ $h.title | default site.Params.teamName }}</h1>
       {{ with $h.text }}<p class="lead">{{ . | markdownify }}</p>{{ end }}
       <div class="btn-row">
         {{ range $i, $b := $h.buttons }}
