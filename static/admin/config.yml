@@ -379,7 +379,7 @@ collections:
           - { name: contact_text, label: Text beside the contact form, widget: text }
           - { name: body, label: Why sponsor (main text), widget: markdown }
       - name: sponsorship
-        label: Sponsorship tiers and budget
+        label: Sponsorship
         file: data/sponsorship.yaml
         format: yaml
         fields:
@@ -389,23 +389,6 @@ collections:
             fields:
               - { name: title, label: Heading, widget: string }
               - { name: text, label: Text, widget: text }
-          - { name: budget_intro, label: Budget intro, widget: text }
-          - name: budget
-            label: Season budget
-            widget: list
-            summary: "{{fields.item}}: ${{fields.amount}}"
-            fields:
-              - { name: item, label: Item, widget: string }
-              - { name: note, label: Note, widget: string, required: false }
-              - { name: amount, label: Amount ($), widget: number, value_type: int }
-          - name: tiers
-            label: Sponsorship tiers (highest first)
-            widget: list
-            fields:
-              - { name: name, label: Tier name, widget: string }
-              - { name: amount, label: Amount, widget: string, hint: "e.g. $1,000+" }
-              - { name: featured, label: Highlight this tier, widget: boolean, default: false, required: false }
-              - { name: benefits, label: Benefits, widget: list }
           - { name: in_kind_intro, label: In-kind intro, widget: text }
           - { name: in_kind, label: In-kind ideas, widget: list }
           - name: steps

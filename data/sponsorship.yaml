@@ -4,43 +4,6 @@ cta:
   title: Help us build the 37974 Robotics Club!
   text: Sponsors pay for parts, tools, field equipement, and fees that students can't cover on their own.
 
-budget_intro: Our planned budget. 
-  In addition to club startup costs, each robot has a startup cost. The rest 
-  of the costs we need to cover are to keep each robot ready for the competition 
-  field. 
-budget_club_startup:
-  - item: Practice field tiles and permiter walls
-    note: One time, or infequent purchase
-    amount: 2500
-  - item: Tools, cutting, and machining equipment
-    note: Big items are a laser cutter, a CNC machine, and a 3D printer
-    amount: 6000
-
-budget_robot_startup:
-  - item: Robot parts and electronics
-    note: Motors, servos, control hub, expansion hub, limelight, sensors, structural material, wheels, odometry
-    amount: 6000
-  - item: Safety gear, tool boxes, storage
-    amount: 500
-
-budget_robot_annual:
-  - item: FIRST season registration
-    note: Paid to FIRST Inspires and FIRST Alberta each season
-    amount: 1500
-  - item: Liability Insurance
-    amount: 3000
-  - item: Robot parts, electronics, and consumables
-    note: Replacement parts, batteries, 3D Printer filament, and raw materials
-    amount: 1000
-  - item: Field elements
-    note: This season's game pieces
-    amount: 1000
-  - item: Premiere Event Registration
-    note: Canadian Rockies International Premiere Event @ Kdays
-    amount: 2500
-  - item: Outreach materials, team jerseys and shirts
-    amount: 1000
-
 in_kind_intro: In-kind gifts count at their fair value toward a sponsorship. You still get a receipt and logo placement on the website, jerseys, and shoutouts on social media.
 in_kind:
   - Parts, tools and specialized equipment

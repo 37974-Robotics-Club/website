@@ -15,62 +15,6 @@
     {{ end }}
   </section>
 
-  <div>
-    <h2>Where your money goes</h2>
-    <p class="lead">{{ $d.budget_intro | default "This is our planned budget for one season. Sponsorship covers the parts students can't fund through fees alone." }}</p>
-  </div>
-  
-  {{/* Where the money goes */}}
-  <section style="margin-bottom:var(--section)">
-    <div class="split">
-      {{ with $d.budget_club_startup }}
-      <div class="table-scroll">
-        <h3>One-Time Club Startup Costs</h3>
-        {{ $total := 0 }}{{ range . }}{{ $total = add $total .amount }}{{ end }}
-        <table class="budget">
-          <thead><tr><th>Item</th><th>Startup Amount</th></tr></thead>
-          <tbody>
-            {{ range . }}
-            <tr><td>{{ .item }}{{ with .note }}<small>{{ . }}</small>{{ end }}<div class="bar" aria-hidden="true"><span style="width: {{ math.Round (mul (div (float .amount) $total) 100) }}%"></span></div></td><td>${{ lang.FormatNumber 0 .amount }}</td></tr>
-            {{ end }}
-          </tbody>
-          <tfoot><tr><td>Total</td><td>${{ lang.FormatNumber 0 $total }}</td></tr></tfoot>
-        </table>
-      </div>
-      {{ end }}
-      {{ with $d.budget_robot_startup }}
-      <div class="table-scroll">
-        <h3>Per Team Startup Costs</h3>
-        {{ $total := 0 }}{{ range . }}{{ $total = add $total .amount }}{{ end }}
-        <table class="budget">
-          <thead><tr><th>Item</th><th>Startup Amount</th></tr></thead>
-          <tbody>
-            {{ range . }}
-            <tr><td>{{ .item }}{{ with .note }}<small>{{ . }}</small>{{ end }}<div class="bar" aria-hidden="true"><span style="width: {{ math.Round (mul (div (float .amount) $total) 100) }}%"></span></div></td><td>${{ lang.FormatNumber 0 .amount }}</td></tr>
-            {{ end }}
-          </tbody>
-          <tfoot><tr><td>Total</td><td>${{ lang.FormatNumber 0 $total }}</td></tr></tfoot>
-        </table>
-      </div>
-      {{ end }}
-      {{ with $d.budget_robot_annual }}
-      <div class="table-scroll">
-        <h3>Per Team Season Costs</h3>
-        {{ $total := 0 }}{{ range . }}{{ $total = add $total .amount }}{{ end }}
-        <table class="budget">
-          <thead><tr><th>Item</th><th>Per Season</th></tr></thead>
-          <tbody>
-            {{ range . }}
-            <tr><td>{{ .item }}{{ with .note }}<small>{{ . }}</small>{{ end }}<div class="bar" aria-hidden="true"><span style="width: {{ math.Round (mul (div (float .amount) $total) 100) }}%"></span></div></td><td>${{ lang.FormatNumber 0 .amount }}</td></tr>
-            {{ end }}
-          </tbody>
-          <tfoot><tr><td>Total</td><td>${{ lang.FormatNumber 0 $total }}</td></tr></tfoot>
-        </table>
-      </div>
-      {{ end }}
-    </div>
-  </section>
-
   <section style="margin-bottom:var(--section)">
   {{ with $d.in_kind }}
     <div class="split" style="margin-top:3rem">
