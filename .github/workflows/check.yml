@@ -1,10 +1,14 @@
 # Builds the site for every pull request, so a broken template or a YAML
 # mistake shows up as a red ✗ on the pull request instead of on the live site.
+# It also runs on pushes to main (saves from the site editor skip pull
+# requests), where it can't block the deploy but does put a red ✗ on the commit.
 # It doesn't publish anything.
 name: Check build
 
 on:
   pull_request:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -23,6 +27,14 @@ jobs:
           sudo dpkg -i ${{ runner.temp }}/hugo.deb
       - name: Check out
         uses: actions/checkout@v4
+      - name: No Discord image links
+        # Discord attachment links expire after about a day, so images linked
+        # from Discord break silently. Upload the file to the site instead.
+        run: |
+          if grep -rInE 'discord(app)?\.(com|net)/attachments|(cdn|media)\.discordapp\.(com|net)' content data hugo.toml; then
+            echo "::error::Found Discord links (listed above). They expire within a day. Upload the image to the site and use its filename instead."
+            exit 1
+          fi
       - name: Build
         # --panicOnWarning turns warnings (like a missing template) into failures.
         run: hugo --gc --minify --panicOnWarning
