@@ -268,26 +268,26 @@ collections:
       - { name: body, label: Notes, widget: markdown, required: false }
 
   # ------------------------------------------------------------------ Sponsors
-  - name: sponsors
-    label: Sponsors
-    label_singular: Sponsor
-    folder: content/sponsors
-    create: true
-    format: yaml-frontmatter
-    slug: "{{slug}}"
-    summary: "{{title}} ({{tier}})"
-    fields:
-      - { name: title, label: Sponsor name, widget: string }
-      - name: tier
-        label: Tier
-        hint: Must match a tier name on the Sponsorship page settings.
-        widget: select
-        options: [Gold, Silver, Bronze, Supporter]
-      - { name: logo, label: Logo, hint: A PNG or SVG with a transparent background works best., widget: image, required: false }
-      - { name: website, label: Website, widget: string, required: false }
-      - { name: message, label: Thank-you message, hint: "What their support made possible.", widget: string, required: false }
-      - { name: active, label: Current sponsor, hint: Turn off to move them to the past-sponsors list., widget: boolean, default: true }
-      - { name: weight, label: Sort order within tier, widget: number, value_type: int, default: 10 }
+  # - name: sponsors
+  #   label: Sponsors
+  #   label_singular: Sponsor
+  #   folder: content/sponsors
+  #   create: true
+  #   format: yaml-frontmatter
+  #   slug: "{{slug}}"
+  #   summary: "{{title}} ({{tier}})"
+  #   fields:
+  #     - { name: title, label: Sponsor name, widget: string }
+  #     - name: tier
+  #       label: Tier
+  #       hint: Must match a tier name on the Sponsorship page settings.
+  #       widget: select
+  #       options: [Gold, Silver, Bronze, Supporter]
+  #     - { name: logo, label: Logo, hint: A PNG or SVG with a transparent background works best., widget: image, required: false }
+  #     - { name: website, label: Website, widget: string, required: false }
+  #     - { name: message, label: Thank-you message, hint: "What their support made possible.", widget: string, required: false }
+  #     - { name: active, label: Current sponsor, hint: Turn off to move them to the past-sponsors list., widget: boolean, default: true }
+  #     - { name: weight, label: Sort order within tier, widget: number, value_type: int, default: 10 }
 
   # ------------------------------------------------------------------ Pages
   - name: pages
@@ -379,7 +379,7 @@ collections:
           - { name: contact_text, label: Text beside the contact form, widget: text }
           - { name: body, label: Why sponsor (main text), widget: markdown }
       - name: sponsorship
-        label: Sponsorship tiers and budget
+        label: Sponsorship and budget
         file: data/sponsorship.yaml
         format: yaml
         fields:
@@ -398,16 +398,16 @@ collections:
               - { name: item, label: Item, widget: string }
               - { name: note, label: Note, widget: string, required: false }
               - { name: amount, label: Amount ($), widget: number, value_type: int }
-          - name: tiers
-            label: Sponsorship tiers (highest first)
-            widget: list
-            fields:
-              - { name: name, label: Tier name, widget: string }
-              - { name: amount, label: Amount, widget: string, hint: "e.g. $1,000+" }
-              - { name: featured, label: Highlight this tier, widget: boolean, default: false, required: false }
-              - { name: benefits, label: Benefits, widget: list }
-          - { name: in_kind_intro, label: In-kind intro, widget: text }
-          - { name: in_kind, label: In-kind ideas, widget: list }
+          # - name: tiers
+          #   label: Sponsorship tiers (highest first)
+          #   widget: list
+          #   fields:
+          #     - { name: name, label: Tier name, widget: string }
+          #     - { name: amount, label: Amount, widget: string, hint: "e.g. $1,000+" }
+          #     - { name: featured, label: Highlight this tier, widget: boolean, default: false, required: false }
+          #     - { name: benefits, label: Benefits, widget: list }
+          # - { name: in_kind_intro, label: In-kind intro, widget: text }
+          # - { name: in_kind, label: In-kind ideas, widget: list }
           - name: steps
             label: How to sponsor (steps in order)
             widget: list
