@@ -5,78 +5,11 @@
 cta:
   title: Help us build the 37974 Robotics Club!
   text: Sponsors pay for parts, tools, field equipement, and fees that students can't cover on their own.
-
-budget_intro: Our planned budget. 
-  In addition to club startup costs, each robot has a startup cost. The rest 
-  of the costs we need to cover are to keep each robot ready for the competition 
-  field. 
-budget_club_startup:
-  - item: Practice field tiles and permiter walls
-    note: One time, or infequent purchase
-    amount: 2500
-  - item: Tools, cutting, and machining equipment
-    note: Big items are a laser cutter, a CNC machine, and a 3D printer
-    amount: 6000
-
-budget_robot_startup:
-  - item: Robot parts and electronics
-    note: Motors, servos, control hub, expansion hub, limelight, sensors, structural material, wheels, odometry
-    amount: 6000
-  - item: Safety gear, tool boxes, storage
-    amount: 500
-
-budget_robot_annual:
-  - item: FIRST season registration
-    note: Paid to FIRST Inspires and FIRST Alberta each season
-    amount: 1500
-  - item: Liability Insurance
+budget_intro: Our planned budget. In addition to club startup costs, each robot has a startup cost. The rest of the costs we need to cover are to keep each robot ready for the competition field.
+budget:
+  - item: Tools, cutting and machining equipment
+    note: ''
     amount: 3000
-  - item: Robot parts, electronics, and consumables
-    note: Replacement parts, batteries, 3D Printer filament, and raw materials
-    amount: 1000
-  - item: Field elements
-    note: This season's game pieces
-    amount: 1000
-  - item: Premiere Event Registration
-    note: Canadian Rockies International Premiere Event @ Kdays
-    amount: 2500
-  - item: Outreach materials, team jerseys and shirts
-    amount: 1000
-
-tiers:
-  - name: Gold
-    amount: "$2,000+"
-    featured: true
-    benefits:
-      - Large logo on the robot and team shirts
-      - Top placement on our website and pit display
-      - A visit from the team with the robot
-      - Thank-you posts on our social channels
-  - name: Silver
-    amount: "$1,000+"
-    benefits:
-      - Logo on the robot and website
-      - Logo on our pit display
-      - Thank-you post on social channels
-  - name: Bronze
-    amount: "$500+"
-    benefits:
-      - Logo on our website
-      - Name on the robot
-      - Season update emails from the team
-  - name: Supporter
-    amount: "Any amount"
-    benefits:
-      - Name on our website
-      - Season update emails from the team
-
-in_kind_intro: In-kind gifts count at their fair value toward a sponsorship. You still get a receipt and logo placement on the website, jerseys, and shoutouts on social media.
-in_kind:
-  - Parts, tools and specialized equipment
-  - Machining, laser cutting or printing services (banners, jerseys, shirts, stickers)
-  - A workshop visit or mentoring from your engineers
-  - Meeting or storage space
-
 steps:
   - title: Get in touch
     text: Send the form below or email us. We'll reply with our sponsorship package.
@@ -86,3 +19,65 @@ steps:
     text: Pay by cheque or e-transfer to the Club's bank account. We send an invoice and receipt.
   - title: See it in action
     text: You get shoutouts on our Instragram page, your logo goes on the website and jerseys, and you get updates through the season.
+budget_club_startup:
+  - amount: 2500
+    item: Practice field tiles and permiter walls
+    note: One time, or infequent purchase
+  - amount: 6000
+    item: Tools, cutting, and machining equipment
+    note: Big items are a laser cutter, a CNC machine, and a 3D printer
+budget_robot_annual:
+  - amount: 1500
+    item: FIRST season registration
+    note: Paid to FIRST Inspires and FIRST Alberta each season
+  - amount: 3000
+    item: Liability Insurance
+  - amount: 1000
+    item: Robot parts, electronics, and consumables
+    note: Replacement parts, batteries, 3D Printer filament, and raw materials
+  - amount: 1000
+    item: Field elements
+    note: This season's game pieces
+  - amount: 2500
+    item: Premiere Event Registration
+    note: Canadian Rockies International Premiere Event @ Kdays
+  - amount: 1000
+    item: Outreach materials, team jerseys and shirts
+budget_robot_startup:
+  - amount: 6000
+    item: Robot parts and electronics
+    note: Motors, servos, control hub, expansion hub, limelight, sensors, structural material, wheels, odometry
+  - amount: 500
+    item: Safety gear, tool boxes, storage
+in_kind_intro: In-kind gifts count at their fair value toward a sponsorship. You still get a receipt and logo placement on the website, jerseys, and shoutouts on social media.
+in_kind:
+  - Parts, tools and specialized equipment
+  - Machining, laser cutting or printing services (banners, jerseys, shirts, stickers)
+  - A workshop visit or mentoring from your engineers
+  - Meeting or storage space
+tiers:
+  - amount: $2,000+
+    benefits:
+      - Large logo on the robot and team shirts
+      - Top placement on our website and pit display
+      - A visit from the team with the robot
+      - Thank-you posts on our social channels
+    featured: true
+    name: Gold
+  - amount: $1,000+
+    benefits:
+      - Logo on the robot and website
+      - Logo on our pit display
+      - Thank-you post on social channels
+    name: Silver
+  - amount: $500+
+    benefits:
+      - Logo on our website
+      - Name on the robot
+      - Season update emails from the team
+    name: Bronze
+  - amount: Any amount
+    benefits:
+      - Name on our website
+      - Season update emails from the team
+    name: Supporter
