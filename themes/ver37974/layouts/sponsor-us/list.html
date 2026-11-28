@@ -71,21 +71,7 @@
     </div>
   </section>
 
-  {{/* Tiers */}}
-  {{ with $d.tiers }}
-  <section style="margin-bottom:var(--section)">
-    <div class="sec-head"><h2>What sponsorship looks like</h2><p class="muted">Amounts are per season. Every level is welcome.</p></div>
-    <div class="tiers" style="--cols: {{ len . }}">
-      {{ range $i, $t := . }}
-      <div class="tier-card{{ if .featured }} is-featured{{ end }}">
-        <h3>{{ .name }}</h3>
-        <p class="tier-card__amt">{{ .amount }}{{ with .per }} <small>{{ . }}</small>{{ end }}</p>
-        <ul class="tri-list">{{ range .benefits }}<li>{{ . }}</li>{{ end }}</ul>
-      </div>
-      {{ end }}
-    </div>
-  </section>
-  {{ end }}
+
 
   <section style="margin-bottom:var(--section)">
   {{ with $d.in_kind }}
